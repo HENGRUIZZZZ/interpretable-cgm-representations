@@ -1,0 +1,46 @@
+subject_id,age,sex,bmi,weight_kg,height_cm,ethnicity,dataset
+D3_CGMacros-001,27,M,22.26523858,133.8,65.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-002,49,F,30.94674189,169.2,62.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-003,59,F,26.94868993,157.0,64.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-004,33,F,42.38427939,262.6,66.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-005,51,F,30.95753448,172.0,62.5,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-006,51,F,29.30345134,197.0,68.75,White,D3_CGMacros_2025
+D3_CGMacros-007,66,F,27.0703267,199.6,72.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-008,54,M,39.94543989,218.4,62.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-009,34,F,37.00150587,183.2,59.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-010,54,F,35.81189162,195.8,62.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-011,34,M,29.16271975,186.2,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-012,52,M,30.27287256,205.0,69.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-013,56,F,32.62942526,178.4,62.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-014,53,M,28.47358996,181.8,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-015,47,F,24.33627734,128.8,61.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-016,48,F,45.93513295,284.6,66.0,African American,D3_CGMacros_2025
+D3_CGMacros-017,33,F,22.69318234,140.6,66.0,White,D3_CGMacros_2025
+D3_CGMacros-018,18,M,38.05875885,243.0,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-019,40,F,36.42909871,202.4,62.5,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-020,59,F,35.95333351,206.2,63.5,African American,D3_CGMacros_2025
+D3_CGMacros-021,63,F,25.66595591,142.6,62.5,African American,D3_CGMacros_2025
+D3_CGMacros-022,69,F,20.68996219,116.8,63.0,White,D3_CGMacros_2025
+D3_CGMacros-023,55,M,24.24483897,154.8,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-026,35,M,31.16746095,199.0,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-027,24,F,27.12665446,173.2,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-028,59,F,39.99681457,204.8,60.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-029,52,M,29.51764915,164.0,62.5,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-030,60,F,34.01032548,180.0,61.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-031,46,F,23.11126491,152.0,68.0,White,D3_CGMacros_2025
+D3_CGMacros-032,64,M,22.9202666,169.0,72.0,White,D3_CGMacros_2025
+D3_CGMacros-033,40,M,30.03834865,175.0,64.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-034,24,M,25.80197702,185.0,71.0,White,D3_CGMacros_2025
+D3_CGMacros-035,45,F,28.73382608,167.4,64.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-036,61,M,24.98509691,154.8,66.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-038,52,M,34.45714309,202.0,64.2,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-039,45,F,26.92293385,147.2,62.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-041,58,F,27.85067764,147.4,61.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-042,51,F,43.26869186,229.0,61.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-043,45,F,49.08823644,259.8,61.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-044,60,F,35.91846122,206.0,63.5,"Black, African American",D3_CGMacros_2025
+D3_CGMacros-045,46,F,32.88125085,162.8,59.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-046,51,M,28.16034914,179.8,67.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-047,62,M,31.37720076,182.8,64.0,Hispanic/Latino,D3_CGMacros_2025
+D3_CGMacros-048,22,F,21.1336719,127.0,65.0,White,D3_CGMacros_2025
+D3_CGMacros-049,58,F,36.09087565,184.8,60.0,Hispanic/Latino,D3_CGMacros_2025

@@ -1,0 +1,22 @@
+[
+  {
+    "feature_combo": "Tier 1: CGM stats",
+    "sspg_lodo_pearson_r": 0.14961305670562972,
+    "di_lodo_pearson_r": 0.18156340407215887
+  },
+  {
+    "feature_combo": "Tier 2: 6D ODE params",
+    "sspg_lodo_pearson_r": -0.052429456309542176,
+    "di_lodo_pearson_r": 0.07103384481611572
+  },
+  {
+    "feature_combo": "Tier 3: 26D full latent",
+    "sspg_lodo_pearson_r": 0.1405091333069688,
+    "di_lodo_pearson_r": 0.38132074707665203
+  },
+  {
+    "feature_combo": "Tier 4: 26D + demographics",
+    "sspg_lodo_pearson_r": 0.30153444687615333,
+    "di_lodo_pearson_r": 0.4329868226141194
+  }
+]

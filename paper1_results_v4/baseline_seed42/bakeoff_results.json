@@ -1,0 +1,18 @@
+{
+  "RouteA_PCA2_Ridge_sspg_spearman_r": 0.2591935604921602,
+  "RouteA_PCA2_Ridge_sspg_p": 0.017974475130972594,
+  "RouteA_PCA2_Ridge_di_spearman_r": 0.18591812979125127,
+  "RouteA_PCA2_Ridge_di_p": 0.14459754763173746,
+  "IR_proxy_vs_SSPG_spearman_r": -0.12476773861682153,
+  "IR_proxy_vs_SSPG_p": 0.26107768029705236,
+  "BCF_proxy_vs_DI_spearman_r": 0.35553902099119605,
+  "BCF_proxy_vs_DI_p": 0.004242205191441461,
+  "RouteB_XGBoost_sspg_spearman_r": -0.004934020795112,
+  "RouteB_XGBoost_sspg_p": 0.9646894912437325,
+  "RouteB_XGBoost_di_spearman_r": 0.254947376018935,
+  "RouteB_XGBoost_di_p": 0.04374602599514526,
+  "RouteC_Ridge_stats_sspg_spearman_r": 0.3145490746466827,
+  "RouteC_Ridge_stats_sspg_p": 0.00377814310577454,
+  "RouteC_Ridge_stats_di_spearman_r": 0.3699641172995542,
+  "RouteC_Ridge_stats_di_p": 0.0028416657731829675
+}

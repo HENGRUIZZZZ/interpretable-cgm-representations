@@ -1,0 +1,22 @@
+V7 Route 1: Lambda scan (LODO-CV Pearson r)
+==================================================
+
+1A: lambda_sspg (lambda_di=0) -> SSPG
+  lambda_sspg=0.001  Pearson r = 0.1326
+  lambda_sspg=0.005  Pearson r = 0.4930
+  lambda_sspg=0.010  Pearson r = 0.2409
+  lambda_sspg=0.050  Pearson r = 0.3878
+  lambda_sspg=0.100  Pearson r = 0.5468
+  lambda_sspg=0.500  Pearson r = 0.3994
+  lambda_sspg=1.000  Pearson r = 0.1968
+  -> lambda_sspg_best = 0.1  (r = 0.5468)
+
+1B: lambda_di (lambda_sspg=0) -> DI
+  lambda_di=0.001  Pearson r = 0.2511
+  lambda_di=0.005  Pearson r = 0.3105
+  lambda_di=0.010  Pearson r = 0.4036
+  lambda_di=0.050  Pearson r = 0.5195
+  lambda_di=0.100  Pearson r = 0.2840
+  lambda_di=0.500  Pearson r = 0.4171
+  lambda_di=1.000  Pearson r = 0.4450
+  -> lambda_di_best = 0.05  (r = 0.5195)

@@ -1,0 +1,7 @@
+{
+  "sspg_spearman_r": -0.08571428571428573,
+  "di_spearman_r": -0.3,
+  "lambda_sspg": 0.1,
+  "lambda_di": 0.1,
+  "seed": 42
+}

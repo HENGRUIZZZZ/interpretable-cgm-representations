@@ -1,0 +1,32 @@
+V8 双模型专家系统 - 评估报告
+========================================
+
+设计: SSPG 专家 (仅 lambda_sspg=0.1) + DI 专家 (仅 lambda_di=1.0)，
+      Route 3 整合两路 latent，LODO-CV Ridge 得到最终 SSPG/DI 预测。
+
+Route 1 (SSPG 专家)
+----------------
+配置: lambda_sspg=0.1, lambda_di=0
+产出: sspg_specialist_model.pt, sspg_specialist_latents.csv
+
+Route 2 (DI 专家)
+----------------
+配置: lambda_sspg=0, lambda_di=1.0
+产出: di_specialist_model.pt, di_specialist_latents.csv
+
+Route 3 (综合分析，无训练)
+----------------
+输入: route1/sspg_specialist_latents.csv, route2/di_specialist_latents.csv
+方法: 对每个专家 latent 做 LODO-CV Ridge 回归，得到每样本的 sspg_pred / di_pred
+样本: 63 个 (同时有 sspg/di 金标准及两路预测的样本)
+
+最终性能 (整合后 Pearson r)
+----------------
+SSPG: r = 0.4568  (p = 0.0002)
+DI:   r = 0.2687  (p = 0.0332)
+
+产出文件
+----------------
+route3/v8_final_results.csv   - 每样本 sspg, di, sspg_pred, di_pred 等
+route3/v8_quadrant_plot.png   - 四象限图 (SSPG_pred vs DI_pred，按 dataset 着色)
+route3/v8_metrics.txt         - 上述 r/p 数值

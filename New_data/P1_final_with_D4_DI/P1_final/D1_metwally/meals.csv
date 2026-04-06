@@ -1,0 +1,149 @@
+subject_id,meal_type,meal_context,carb_g,description,dataset
+D1_S01,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S02,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S05,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S06,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S07,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S09,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S11,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S13,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S14,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S15,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S19,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S19,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S19,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S19,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S21,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S23,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S26,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S27,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S27,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S27,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S27,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S28,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S28,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S28,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S28,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S31,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S32,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S32,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S32,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S32,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S35,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S36,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S38,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S41,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S42,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S44,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S45,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S47,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S49,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S50,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S55,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S57,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S58,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S59,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S59,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S59,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S59,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S22,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S22,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S22,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S22,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S74,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S74,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S74,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S74,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S76,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S76,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S76,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S77,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S77,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S77,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S77,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S79,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S79,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S79,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S79,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S80,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S80,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S80,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S83,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S83,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S83,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S83,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S85,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S85,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S85,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S85,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S87,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S87,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S87,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S88,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S88,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S88,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S88,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S89,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S89,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S89,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S89,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S90,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S90,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S90,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S90,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S93,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S93,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S93,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S93,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S101,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S101,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S101,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S101,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S103,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S103,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S103,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S103,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S104,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S104,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S104,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S104,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S107,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S107,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S107,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S107,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S106,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S106,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S106,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S106,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S112,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S112,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S112,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S112,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S100,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S100,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S100,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S100,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S105,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S105,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S105,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S105,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S115,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S95,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S95,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S95,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S95,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S117,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S117,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S117,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S117,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S122,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S122,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S122,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S122,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S118,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S118,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S118,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally
+D1_S121,OGTT_75g,CTRU_venous,75,OGTT 75g glucose in clinical research unit (venous sampling),D1_metwally
+D1_S121,OGTT_75g,CTRU_cgm,75,OGTT 75g glucose in clinical research unit (CGM),D1_metwally
+D1_S121,OGTT_75g,home_cgm_trial1,75,At-home OGTT 75g glucose trial 1 (CGM),D1_metwally
+D1_S121,OGTT_75g,home_cgm_trial2,75,At-home OGTT 75g glucose trial 2 (CGM),D1_metwally

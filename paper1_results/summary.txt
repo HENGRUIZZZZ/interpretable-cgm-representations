@@ -1,0 +1,30 @@
+# Paper 1 端到端运行结果摘要
+
+## 运行环境
+- Device: MPS (Mac)
+- Data: D1 from cgm_project/output, 70/15/15 train/val/test by subject
+- Epochs: 60, batch_size=32, lr=1e-2, beta_hat=0.01
+
+## 训练
+- Train loss: 11.16 → 0.41 (final)
+- Val loss: 1.27 → 0.25 (final)
+- 模型已保存: paper1_results/autoencoder_d1.pt
+
+## Test 集 latent–金标准相关
+- D1 test 仅 5 名受试者，其中仅 1 人在 labels 中有 sspg/di/homa_ir/homa_b，故 Spearman 相关为 nan（样本量不足）。
+- 若用全 D1 做“相关”（不划分 test）或合并 D1+D2 有金标准者再算相关，可得到有意义的相关系数；当前脚本严格按 train/val/test 划分，test 仅 5 人。
+
+## Level 2 (D2 encode)
+- D2 latent shape: (412, 6)（412 个餐心窗口，6 维 param: tau_m, Gb, sg, si, p2, mi）
+- 已保存: paper1_results/latent_d2.npy
+- mean si≈0.0006, mi≈1.73（与 D1 训好的 decoder 量纲一致）
+
+## 输出文件
+- paper1_results/autoencoder_d1.pt：模型权重 + G_mean, G_std（用于后续 encode 时归一化）
+- paper1_results/correlations.txt：latent 与 sspg/di/homa_ir/homa_b 的 Spearman r、p、n
+- paper1_results/latent_d2.npy：D2 上 encode 得到的 param (412, 6)
+- paper1_results/summary.txt：本摘要
+
+## 建议
+- 若要看到显著的 latent–金标准相关：可 (1) 用 D1 全部数据（不划分）做一次相关；或 (2) 将 D1+D2 中有金标准的受试者合并，用训好的 encoder 取 latent 后与 labels 算相关。
+- Level 3：可用同一 autoencoder_d1.pt 对 D3/D4/D5 用 load_cgm_project_level3 加载后 encode，得到各 cohort 的 latent 做分布/对齐分析。

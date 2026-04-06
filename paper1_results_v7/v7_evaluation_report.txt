@@ -1,0 +1,28 @@
+V7 实验方案（修正版）评估报告
+========================================
+评价标准: Pearson r（统一）；验证: LODO-CV（留一数据集出）。
+
+Route 1 基线优化
+----------------
+1A (仅 SSPG): lambda_sspg_best = 0.1,  LODO-CV Pearson r(SSPG) = 0.5468
+1B (仅 DI):   lambda_di_best   = 0.05,  LODO-CV Pearson r(DI)   = 0.5195
+
+Route 2 两阶段（26D + sspg_hat -> DI）
+----------------
+LODO-CV Pearson r(DI) = 0.3218  （低于 Route 1B 端到端 0.52）
+
+Route 3 多目标组合 A（lambda_sspg=0.1 + lambda_di=0.05）
+----------------
+LODO-CV Pearson r(DI) = -0.025  （本次联合训练未优于单目标；最佳 DI 仍为 Route 1B）
+
+Route 4 四象限临床可解释性
+----------------
+数据: route3/combo_a 预测结果
+象限分类准确率（预测 vs 真实）: 41.27%
+图: route4/v7_quadrant_plot.png
+
+结论
+----------------
+- DI 预测最佳: Route 1B lambda_di=0.05，LODO-CV Pearson r ≈ 0.52（接近目标 r≥0.5）。
+- 两阶段加入 sspg_hat 未提升 DI 的 r。
+- 联合 SSPG+DI 训练（组合 A）在本轮未优于单目标 DI；可进一步调参或尝试组合 B（+ HOMA）。

@@ -1,0 +1,7 @@
+{
+  "n": 16,
+  "pearson_di_correct_head": -0.6447851624500278,
+  "pearson_di_if_sign_flipped": 0.6447851624500278,
+  "pearson_di_if_wrong_head0_used": -0.6442177491731401,
+  "train_di_pred_sign_applied": -1.0
+}

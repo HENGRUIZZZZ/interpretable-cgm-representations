@@ -1,0 +1,15 @@
+============================================================
+实验方案 v5.0 终局之战 — 评估报告
+============================================================
+方案 A runs: 4 SSPG, 4 DI
+方案 B runs: 100 SSPG, 100 DI (100 CV)
+方案 A DI  Spearman r: median=-0.0333  mean=-0.0167
+方案 A SSPG Spearman r: median=0.0286  mean=0.0318
+方案 B DI  Spearman r: median=0.3714  mean=0.3473
+方案 B SSPG Spearman r: median=0.4537  mean=0.4423
+
+最佳方案 A: lambda=0.01 (DI median=0.0286)
+Mann-Whitney U (方案 A best vs 方案 B, DI): stat=48.0000  p=0.0465
+结论: 方案 B 在 DI 上显著优于方案 A。
+
+Saved paper1_results_v5/v5_boxplot_scheme_a_vs_b.png

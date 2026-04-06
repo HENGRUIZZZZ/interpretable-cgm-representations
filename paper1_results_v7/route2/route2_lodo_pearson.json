@@ -1,0 +1,15 @@
+{
+  "mean_pearson_r_di": 0.32176723219669284,
+  "folds": [
+    {
+      "test_dataset": "D1",
+      "pearson_r": 0.27586993629856044,
+      "n": 32
+    },
+    {
+      "test_dataset": "D2",
+      "pearson_r": 0.36766452809482525,
+      "n": 31
+    }
+  ]
+}

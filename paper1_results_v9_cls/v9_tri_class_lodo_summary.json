@@ -1,0 +1,17 @@
+{
+  "lambda_cls_0.1": {
+    "LODO_D1_acc": 0.5,
+    "LODO_D2_acc": 0.5483870967741935,
+    "LODO_mean_acc": 0.5241935483870968
+  },
+  "lambda_cls_0.5": {
+    "LODO_D1_acc": 0.5,
+    "LODO_D2_acc": 0.5483870967741935,
+    "LODO_mean_acc": 0.5241935483870968
+  },
+  "lambda_cls_1.0": {
+    "LODO_D1_acc": 0.5,
+    "LODO_D2_acc": 0.5483870967741935,
+    "LODO_mean_acc": 0.5241935483870968
+  }
+}

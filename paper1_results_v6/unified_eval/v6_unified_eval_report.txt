@@ -1,0 +1,18 @@
+V6 Unified Eval
+==================================================
+Route D DI: median=0.3695
+Route A DI: median=0.3200
+Route B DI: median=0.3619
+Route C DI: median=0.2862
+Route F DI: median=0.3265
+
+D vs A: p=0.000000 *
+D vs B: p=0.076034
+D vs C: p=0.000000 *
+D vs F: p=0.000000 *
+A vs B: p=0.000000 *
+A vs C: p=0.016865
+A vs F: p=0.000762 *
+B vs C: p=0.000000 *
+B vs F: p=0.000000 *
+C vs F: p=0.000000 *

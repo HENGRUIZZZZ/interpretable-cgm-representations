@@ -1,0 +1,106 @@
+P1 Gold-standard prediction metrics
+===================================
+
+Single vs joint: SSPG/DI are physiologically joint; we report both single-latent and 6D Ridge.
+See joint_weights_sspg.csv and joint_weights_di.csv for Ridge coefficients (full-data fit).
+
+Target: sspg
+  direct_mi (full_sample): RMSE=74.83382724885746  R²=0.02644182455215649  Spearman r=0.21852463164053487
+  direct_si (full_sample): RMSE=70.3387653760075  R²=0.13988707049053795  Spearman r=0.36063492845634576
+  single_mi (5fold_single_vs_joint): rmse = 76.2534684417371 ± 14.069592832286162
+  single_si (5fold_single_vs_joint): rmse = 73.71750281964253 ± 10.26946475712843
+  ridge_6d (5fold_single_vs_joint): rmse = 67.31246500892784 ± 7.437345463519844
+  single_mi (5fold_single_vs_joint): r2 = -0.12483542100958074 ± 0.11029421401054074
+  single_si (5fold_single_vs_joint): r2 = -0.1843957159331709 ± 0.6298792613800163
+  ridge_6d (5fold_single_vs_joint): r2 = -0.027713036496206756 ± 0.6448288186388704
+  single_mi (5fold_single_vs_joint): pearson_r = 0.17307972180929657 ± 0.1679849855687269
+  single_si (5fold_single_vs_joint): pearson_r = 0.411487783415138 ± 0.21584174969951012
+  ridge_6d (5fold_single_vs_joint): pearson_r = 0.5022612401909454 ± 0.27440369205666487
+  single_mi (5fold_single_vs_joint): spearman_r = 0.22597036099960857 ± 0.14581864943323983
+  single_si (5fold_single_vs_joint): spearman_r = 0.38085629641619717 ± 0.25452218942107635
+  ridge_6d (5fold_single_vs_joint): spearman_r = 0.47972192058397 ± 0.2729673040745931
+  ridge_6d (5fold_subject): rmse = 65.98556443403622 ± 6.811142279201402
+  ridge_6d (5fold_subject): mae = 54.48574982138098 ± 6.118244906101597
+  ridge_6d (5fold_subject): r2 = 0.029494401531648905 ± 0.5600919198747347
+  ridge_6d (5fold_subject): pearson_r = 0.5305938553331091 ± 0.2697023356681912
+  ridge_6d (5fold_subject): spearman_r = 0.5159812886673587 ± 0.2639114654583963
+  ridge_6d (leave_one_dataset_out): RMSE=66.27151262718543  R²=0.22735340563030193  Spearman r=0.5484876352472675
+  ridge_6d (leave_one_dataset_out): RMSE=69.45104592538884  R²=0.08940846442891592  Spearman r=0.34076015900566015
+  ridge_6d (leave_one_dataset_out): RMSE=80.87290917837349  R²=-0.026545200975224503  Spearman r=0.669172932330827
+  coefficients saved to joint_weights_sspg.csv
+
+Target: di
+  direct_mi (full_sample): RMSE=1.003682838886091  R²=0.3260319263557844  Spearman r=0.6457233033265621
+  direct_si (full_sample): RMSE=1.206617784943606  R²=0.025939860212210064  Spearman r=0.34999193860071126
+  single_mi (5fold_single_vs_joint): rmse = 1.026351903191584 ± 0.19207954254386292
+  single_si (5fold_single_vs_joint): rmse = 1.1923002941760494 ± 0.26569103846032804
+  ridge_6d (5fold_single_vs_joint): rmse = 0.9385572764907542 ± 0.2130456684280086
+  single_mi (5fold_single_vs_joint): r2 = 0.2028977059376202 ± 0.0860208452862099
+  single_si (5fold_single_vs_joint): r2 = -0.05671028024975566 ± 0.05287469832725357
+  ridge_6d (5fold_single_vs_joint): r2 = 0.33623056505584425 ± 0.11920987626063102
+  single_mi (5fold_single_vs_joint): pearson_r = 0.5969075766622811 ± 0.0776016295827312
+  single_si (5fold_single_vs_joint): pearson_r = 0.1457114633540438 ± 0.07199877743294841
+  ridge_6d (5fold_single_vs_joint): pearson_r = 0.6468261805701891 ± 0.06532280395388565
+  single_mi (5fold_single_vs_joint): spearman_r = 0.6774509803921569 ± 0.12755086583643702
+  single_si (5fold_single_vs_joint): spearman_r = 0.3612745098039216 ± 0.07797970437557528
+  ridge_6d (5fold_single_vs_joint): spearman_r = 0.7147058823529413 ± 0.1366020889992326
+  ridge_6d (5fold_subject): rmse = 0.9258931489940423 ± 0.2177893801015091
+  ridge_6d (5fold_subject): mae = 0.7038547863114359 ± 0.0876748150707935
+  ridge_6d (5fold_subject): r2 = 0.36130255440215325 ± 0.07841813181367815
+  ridge_6d (5fold_subject): pearson_r = 0.6568056465414049 ± 0.05518402516288607
+  ridge_6d (5fold_subject): spearman_r = 0.7514705882352942 ± 0.09981961816548676
+  ridge_6d (leave_one_dataset_out): RMSE=0.9675270759345188  R²=-0.013895089812165695  Spearman r=0.3363578054636332
+  ridge_6d (leave_one_dataset_out): RMSE=1.2303979705505754  R²=0.04269060894229315  Spearman r=0.480241935483871
+  ridge_6d (leave_one_dataset_out): RMSE=1.787783161641237  R²=-2528.8894361158877  Spearman r=-0.5584415584415585
+  coefficients saved to joint_weights_di.csv
+
+Target: homa_ir
+  direct_mi (full_sample): RMSE=1.3274587255772523  R²=0.0007151399017687465  Spearman r=0.010743285446828085
+  direct_si (full_sample): RMSE=1.270350100831961  R²=0.0848461579905917  Spearman r=0.37000558862037775
+  single_mi (5fold_single_vs_joint): rmse = 1.3498113271187429 ± 0.2295477747870602
+  single_si (5fold_single_vs_joint): rmse = 1.2774937501029993 ± 0.26743769293918235
+  ridge_6d (5fold_single_vs_joint): rmse = 1.1801350279791056 ± 0.19012722713582966
+  single_mi (5fold_single_vs_joint): r2 = -0.10805152692520434 ± 0.08909033142939554
+  single_si (5fold_single_vs_joint): r2 = 0.01364758836800426 ± 0.15001676750716555
+  ridge_6d (5fold_single_vs_joint): r2 = 0.11051166503980125 ± 0.2765286781431407
+  single_mi (5fold_single_vs_joint): pearson_r = -0.17701643510237897 ± 0.12007060331742338
+  single_si (5fold_single_vs_joint): pearson_r = 0.29528846517383456 ± 0.23148715560128155
+  ridge_6d (5fold_single_vs_joint): pearson_r = 0.48602965468123316 ± 0.13127306845696116
+  single_mi (5fold_single_vs_joint): spearman_r = -0.20879995688280023 ± 0.17942948790560423
+  single_si (5fold_single_vs_joint): spearman_r = 0.35094117783003337 ± 0.20747735302530412
+  ridge_6d (5fold_single_vs_joint): spearman_r = 0.5298634835968576 ± 0.1080040061466444
+  ridge_6d (5fold_subject): rmse = 1.1456620998486424 ± 0.24300558069190936
+  ridge_6d (5fold_subject): mae = 0.8252171585310398 ± 0.09354793993827351
+  ridge_6d (5fold_subject): r2 = 0.18091534520044789 ± 0.23639388017198676
+  ridge_6d (5fold_subject): pearson_r = 0.52193220626898 ± 0.13333504662178747
+  ridge_6d (5fold_subject): spearman_r = 0.5888108520179102 ± 0.08069775743523636
+  ridge_6d (leave_one_dataset_out): RMSE=0.9329203240334412  R²=0.3858837723401489  Spearman r=0.655485292827222
+  ridge_6d (leave_one_dataset_out): RMSE=1.3856939144470144  R²=0.07516823140921058  Spearman r=0.5116168800379327
+  ridge_6d (leave_one_dataset_out): RMSE=2.7043116489934205  R²=-3.8626353261487285  Spearman r=0.6746955037864719
+  coefficients saved to joint_weights_homa_ir.csv
+
+Target: homa_b
+  direct_mi (full_sample): RMSE=51.06574355928436  R²=0.012568925461705072  Spearman r=0.13416746937085858
+  direct_si (full_sample): RMSE=51.26065506002448  R²=0.005016740370986095  Spearman r=0.1344501901972306
+  single_mi (5fold_single_vs_joint): rmse = 51.52346823572094 ± 6.852763913596671
+  single_si (5fold_single_vs_joint): rmse = 51.011265629725514 ± 7.012723881052058
+  ridge_6d (5fold_single_vs_joint): rmse = 52.73578469976063 ± 6.264645766138828
+  single_mi (5fold_single_vs_joint): r2 = -0.04622112064642443 ± 0.091576796422422
+  single_si (5fold_single_vs_joint): r2 = -0.021499485196727487 ± 0.011412738307071199
+  ridge_6d (5fold_single_vs_joint): r2 = -0.11035450517396972 ± 0.1730287764751248
+  single_mi (5fold_single_vs_joint): pearson_r = 0.1290981337832382 ± 0.22404524826000638
+  single_si (5fold_single_vs_joint): pearson_r = 0.0576690732996044 ± 0.007007597180437175
+  ridge_6d (5fold_single_vs_joint): pearson_r = 0.08262018611067233 ± 0.25602201741983116
+  single_mi (5fold_single_vs_joint): spearman_r = 0.197593984962406 ± 0.22741620967686385
+  single_si (5fold_single_vs_joint): spearman_r = 0.11538847117794485 ± 0.09197777820741176
+  ridge_6d (5fold_single_vs_joint): spearman_r = 0.11197994987468674 ± 0.23820619496120107
+  ridge_6d (5fold_subject): rmse = 52.00436605492134 ± 7.549717907881125
+  ridge_6d (5fold_subject): mae = 37.852630586330875 ± 5.150683236380089
+  ridge_6d (5fold_subject): r2 = -0.07315158365190684 ± 0.18595886507751352
+  ridge_6d (5fold_subject): pearson_r = 0.12784178291545528 ± 0.2803964409623478
+  ridge_6d (5fold_subject): spearman_r = 0.17689223057644113 ± 0.26593982009967737
+  ridge_6d (leave_one_dataset_out): RMSE=60.11837497744113  R²=-0.1642599177176789  Spearman r=-0.43804985337243396
+  ridge_6d (leave_one_dataset_out): RMSE=49.32509265421963  R²=-0.0606764153353343  Spearman r=-0.2060218112849692
+  ridge_6d (leave_one_dataset_out): RMSE=66.0436713293978  R²=-1.1045775639984057  Spearman r=-0.2573227580675459
+  coefficients saved to joint_weights_homa_b.csv
+

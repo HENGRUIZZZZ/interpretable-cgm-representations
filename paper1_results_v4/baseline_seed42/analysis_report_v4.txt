@@ -1,0 +1,16 @@
+Experiment plan v4.0 — analysis report
+=====================================
+Full features: paper1_results_v4/baseline_seed42/full_features_v4.csv
+Rows: 127, with SSPG: 83, with DI: 63
+
+Bake-off Spearman r:
+  BCF_proxy_vs_DI_spearman_r: 0.3555
+  IR_proxy_vs_SSPG_spearman_r: -0.1248
+  RouteA_PCA2_Ridge_di_spearman_r: 0.1859
+  RouteA_PCA2_Ridge_sspg_spearman_r: 0.2592
+  RouteB_XGBoost_di_spearman_r: 0.2549
+  RouteB_XGBoost_sspg_spearman_r: -0.0049
+  RouteC_Ridge_stats_di_spearman_r: 0.3700
+  RouteC_Ridge_stats_sspg_spearman_r: 0.3145
+
+Plots and subtype counts written to output_dir.

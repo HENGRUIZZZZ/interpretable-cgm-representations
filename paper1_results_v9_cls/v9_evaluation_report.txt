@@ -1,0 +1,18 @@
+V9 Multi-task tri-class — Evaluation report
+============================================
+
+Setup: DI-expert (lambda_sspg=0, lambda_di=1.0), lambda_cls in {0.1, 0.5, 1.0}.
+Tri-class: IS / IR-Compensated / IR-Decompensated (sspg_cut=120, di_cut=1.2).
+LODO-CV: train on one dataset, test on the other (D1 vs D2); classifier = LogisticRegression on 26D latent.
+
+Results (LODO tri-class accuracy)
+---------------------------------
+lambda_cls_0.1:  LODO_D1_acc=0.5000  LODO_D2_acc=0.5484  LODO_mean_acc=0.5242
+lambda_cls_0.5:  LODO_D1_acc=0.5000  LODO_D2_acc=0.5484  LODO_mean_acc=0.5242
+lambda_cls_1.0:  LODO_D1_acc=0.5000  LODO_D2_acc=0.5484  LODO_mean_acc=0.5242
+
+(n_valid_test=63 per fold)
+
+Note: Target was >65% LODO-CV accuracy; current ~52% suggests room for improvement (e.g. more data, features, or different classifier/regularization).
+
+All three lambda_cls training runs completed successfully. Full metrics in v9_tri_class_lodo_summary.json.

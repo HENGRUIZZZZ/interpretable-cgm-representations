@@ -1,0 +1,12 @@
+{
+  "sspg": {
+    "spearman_r": 0.5,
+    "rmse": NaN,
+    "n": 7
+  },
+  "di": {
+    "spearman_r": -0.7999999999999999,
+    "rmse": NaN,
+    "n": 5
+  }
+}

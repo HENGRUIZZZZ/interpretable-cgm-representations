@@ -1,0 +1,76 @@
+{
+  "1A": [
+    {
+      "lambda_sspg": 0.001,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.1326485096744485
+    },
+    {
+      "lambda_sspg": 0.005,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.49297110767960933
+    },
+    {
+      "lambda_sspg": 0.01,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.2409286520992733
+    },
+    {
+      "lambda_sspg": 0.05,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.3878329454712596
+    },
+    {
+      "lambda_sspg": 0.1,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.5468249002604438
+    },
+    {
+      "lambda_sspg": 0.5,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.39942416630875277
+    },
+    {
+      "lambda_sspg": 1.0,
+      "lambda_di": 0,
+      "mean_pearson_r": 0.19680007445008477
+    }
+  ],
+  "1B": [
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 0.001,
+      "mean_pearson_r": 0.2511214434476271
+    },
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 0.005,
+      "mean_pearson_r": 0.31054200877904636
+    },
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 0.01,
+      "mean_pearson_r": 0.4036403262636169
+    },
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 0.05,
+      "mean_pearson_r": 0.5195005514426134
+    },
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 0.1,
+      "mean_pearson_r": 0.28397939558653273
+    },
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 0.5,
+      "mean_pearson_r": 0.4170803680068753
+    },
+    {
+      "lambda_sspg": 0,
+      "lambda_di": 1.0,
+      "mean_pearson_r": 0.4449797132955244
+    }
+  ]
+}

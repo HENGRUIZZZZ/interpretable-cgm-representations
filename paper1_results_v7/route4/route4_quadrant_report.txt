@@ -1,0 +1,8 @@
+V7 Route 4: IR-Beta 四象限分层
+==================================================
+数据: paper1_results_v7/route3/combo_a/latent_and_gold_all_26d.csv
+分割线: SSPG_median = 107.00, DI_median = 1.4921
+象限分类准确率 (预测 vs 真实): 0.4127  (n=63)
+
+说明: 象限 1=低IR高Beta, 2=高IR高Beta, 3=高IR低Beta, 4=低IR低Beta。
+动态追踪: 若有纵向数据，可在此图上绘制个体轨迹，量化干预效果。

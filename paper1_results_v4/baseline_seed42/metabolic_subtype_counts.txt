@@ -1,0 +1,5 @@
+Metabolic subtype counts:
+  Healthy: 28
+  IR: 12
+  β-cell defect: 20
+  Mixed: 3

@@ -1,0 +1,22 @@
+{
+  "sspg": {
+    "rmse": 69.28793713268192,
+    "mae": 49.521886613633896,
+    "r2": -0.052824555222380054,
+    "pearson_r": NaN,
+    "pearson_p": NaN,
+    "spearman_r": NaN,
+    "spearman_p": NaN,
+    "n": 36
+  },
+  "di": {
+    "rmse": 0.9050007916474925,
+    "mae": 0.8216778834660848,
+    "r2": -1.2751564201967733,
+    "pearson_r": NaN,
+    "pearson_p": NaN,
+    "spearman_r": NaN,
+    "spearman_p": NaN,
+    "n": 12
+  }
+}

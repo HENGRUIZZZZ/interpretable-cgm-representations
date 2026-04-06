@@ -24,6 +24,14 @@ Our mechanistic decoder uses our longstanding prior knowledge about glucose dyna
 
 ![](assets/model_figure.png)
 
+## Paper 1 results and reproducibility
+
+For the extended P1 pipeline (SSPG/DI prediction, 6D latent figures, linear vs nonlinear, VAE fit):
+
+- **Figures and reports**: Main figures under `paper1_results_v4/figures/`; diagnostic tables and plots under `paper1_results_diagnostic/`. See [docs/P1_FULL_DIAGNOSTIC_AND_FIGURES.md](docs/P1_FULL_DIAGNOSTIC_AND_FIGURES.md).
+- **Keep all result directories** (`paper1_results_v2`, `v3`, `v4`, `v5`, `paper1_results_diagnostic`) for future rebuild and comparison.
+- **Refresh all figures and reports without retraining**: run `bash scripts/rebuild_all_figures_and_reports.sh`. Full rebuild and retention policy: [docs/P1_REBUILD_AND_RETENTION.md](docs/P1_REBUILD_AND_RETENTION.md).
+
 ## Citation
 
 If you use this codebase, or otherwise found our work valuable, please cite Mamba:

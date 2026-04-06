@@ -1,0 +1,74 @@
+[
+  {
+    "sspg_spearman_r": 0.14285714285714288,
+    "di_spearman_r": 0.3,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 42,
+    "run_name": "lambda0.01_seed42",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": -0.4285714285714286,
+    "di_spearman_r": 0.028571428571428574,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 43,
+    "run_name": "lambda0.01_seed43",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": 0.498482545817653,
+    "di_spearman_r": -0.09523809523809526,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 44,
+    "run_name": "lambda0.01_seed44",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": 0.261904761904762,
+    "di_spearman_r": -0.5714285714285715,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 45,
+    "run_name": "lambda0.01_seed45",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": 0.5666666666666667,
+    "di_spearman_r": 0.28571428571428575,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 46,
+    "run_name": "lambda0.01_seed46",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": -0.03333333333333333,
+    "di_spearman_r": -0.48571428571428577,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 47,
+    "run_name": "lambda0.01_seed47",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": 0.0,
+    "di_spearman_r": 0.2,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 48,
+    "run_name": "lambda0.01_seed48",
+    "lambda": 0.01
+  },
+  {
+    "sspg_spearman_r": 0.5,
+    "di_spearman_r": -0.7999999999999999,
+    "lambda_sspg": 0.01,
+    "lambda_di": 0.01,
+    "seed": 49,
+    "run_name": "lambda0.01_seed49",
+    "lambda": 0.01
+  }
+]

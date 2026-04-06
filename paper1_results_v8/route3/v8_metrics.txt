@@ -1,0 +1,2 @@
+SSPG Pearson r = 0.4568  p = 0.0002
+DI   Pearson r = 0.2687  p = 0.0332
