@@ -117,8 +117,9 @@ def train_on_d1d2(
     env["P1_SEED"] = str(seed)
     env["P1_NUM_EPOCHS"] = str(num_epochs)
     env["P1_ONE_MEAL_PER_SUBJECT"] = "1"
-    env["P1_HEAD_USE_26D"] = "1"
     env["P1_SAVE_26D_LATENT"] = "1"
+    env["LAMBDA_SSPG"] = str(lambda_sspg)
+    env["LAMBDA_DI"] = str(lambda_di)
     if extra_env:
         env.update({k: str(v) for k, v in extra_env.items()})
 

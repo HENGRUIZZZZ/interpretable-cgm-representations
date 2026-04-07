@@ -33,6 +33,8 @@ LAMBDA_CLS = float(os.environ.get("LAMBDA_CLS", "0.0"))
 LAMBDA_IDENTIFIABILITY = float(os.environ.get("P1_IDENT_LOSS_LAMBDA", "0.0"))
 # 正交解耦：惩罚 si 与 mi 的相关系数平方，使二者学习不同信息 (解耦实验诊断报告 v1.0)
 LAMBDA_ORTHO = float(os.environ.get("LAMBDA_ORTHO", "0.0"))
+# v13 update3: 防止 si/mi 坍缩的多样性惩罚
+LAMBDA_DIV = float(os.environ.get("LAMBDA_DIV", "0.0"))
 # 对 SSPG/DI 真值 z-score 后再算 loss，预测时反标准化；可稳定 M1 多目标训练
 P1_ZSCORE_TARGETS = os.environ.get("P1_ZSCORE_TARGETS", "").strip().lower() in ("1", "true", "yes")
 # 解耦实验：SSPG 头仅用 si (第4维)，实现 si/mi 在潜在空间解耦 (P1解耦实验操作手册 v1.0)
@@ -61,9 +63,12 @@ P1_V8_HEAD_10D = os.environ.get("P1_V8_HEAD_10D", "").strip().lower() in ("1", "
 P1_DETACH_HEAD_INPUT = os.environ.get("P1_DETACH_HEAD_INPUT", "").strip().lower() in ("1", "true", "yes")
 # v11：当启用 detach 时，允许保留极小梯度（0=完全切断，0.01=soft detach）
 P1_HEAD_GRAD_SCALE = float(os.environ.get("P1_HEAD_GRAD_SCALE", "0.0"))
+# v12：在非 e2e 模式下，使用分离的 26D SSPG/DI 预测头
+P1_SEPARATE_HEAD_26D = os.environ.get("P1_SEPARATE_HEAD_26D", "").strip().lower() in ("1", "true", "yes")
 # V6 路线 E：仅微调 head，encoder 冻结，需先加载预训练模型
 P1_FINETUNE_HEAD_ONLY = os.environ.get("P1_FINETUNE_HEAD_ONLY", "").strip().lower() in ("1", "true", "yes")
 P1_PRETRAINED_MODEL = os.environ.get("P1_PRETRAINED_MODEL", "").strip()
+P1_RESUME_CKPT = os.environ.get("P1_RESUME_CKPT", "").strip()
 if P1_FINETUNE_HEAD_ONLY:
     P1_HEAD_USE_26D = True
 RESULTS_DIR = os.environ.get("P1_RESULTS_DIR", "paper1_results")
@@ -368,8 +373,24 @@ def main():
         else:
             print(f" [V6/V8] e2e_head 使用 26D 全 latent (dim={head_input_dim})")
     else:
-        # 预测头：SSPG 解耦模式下仅用 si (1维)；否则 6D。DI：MLP(si,mi) / LogProduct(1,1) / 乘积无头 / 6D线性
-        sspg_head = torch.nn.Linear(1 if P1_DECOUPLE_SSPG else len(PARAM_NAMES), 1).to(device)
+        if P1_SEPARATE_HEAD_26D:
+            head_input_dim = n_ode_params + z_init_dim + z_nonseq_dim
+            sspg_head = torch.nn.Sequential(
+                torch.nn.Linear(head_input_dim, 32),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(0.3),
+                torch.nn.Linear(32, 1),
+            ).to(device)
+            di_head = torch.nn.Sequential(
+                torch.nn.Linear(head_input_dim, 32),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(0.3),
+                torch.nn.Linear(32, 1),
+            ).to(device)
+            print(f" [V12] 分离预测头: SSPG/DI head 输入 26D (dim={head_input_dim})")
+        else:
+            # 预测头：SSPG 解耦模式下仅用 si (1维)；否则 6D。DI：MLP(si,mi) / LogProduct(1,1) / 乘积无头 / 6D线性
+            sspg_head = torch.nn.Linear(1 if P1_DECOUPLE_SSPG else len(PARAM_NAMES), 1).to(device)
     if not P1_V5_PREDICTION_HEAD and P1_DI_MLP_HEAD:
         di_head = torch.nn.Sequential(
             torch.nn.Linear(2, 16),
@@ -382,9 +403,9 @@ def main():
     elif not P1_V5_PREDICTION_HEAD and P1_DI_LOG_PRODUCT:
         di_head = torch.nn.Linear(1, 1).to(device)
         print(" [LOG-PRODUCT] DI head: Linear(1,1) on log(si)+log(mi)")
-    elif P1_DI_PRODUCT_CONSTRAINT and not P1_V5_PREDICTION_HEAD:
+    elif P1_DI_PRODUCT_CONSTRAINT and not P1_V5_PREDICTION_HEAD and not P1_SEPARATE_HEAD_26D:
         di_head = None
-    elif not P1_V5_PREDICTION_HEAD:
+    elif not P1_V5_PREDICTION_HEAD and not P1_SEPARATE_HEAD_26D:
         di_head = torch.nn.Linear(len(PARAM_NAMES), 1).to(device)
     # 三分类辅助任务 head（基于 6D ODE latent）
     if LAMBDA_CLS > 0.0 and P1_USE_TRI_CLASS:
@@ -397,6 +418,22 @@ def main():
         print(" [V9] tri-class head: 6D latent -> 3 classes")
     else:
         cls_head = None
+
+    if P1_RESUME_CKPT and os.path.isfile(P1_RESUME_CKPT):
+        rckpt = torch.load(P1_RESUME_CKPT, map_location=device, weights_only=False)
+        if "model_state" in rckpt:
+            model.load_state_dict(rckpt["model_state"], strict=False)
+        if ir_head is not None and "ir_head_state" in rckpt:
+            ir_head.load_state_dict(rckpt["ir_head_state"], strict=False)
+        if sspg_head is not None and "sspg_head_state" in rckpt:
+            sspg_head.load_state_dict(rckpt["sspg_head_state"], strict=False)
+        if di_head is not None and "di_head_state" in rckpt:
+            di_head.load_state_dict(rckpt["di_head_state"], strict=False)
+        if e2e_head is not None and "e2e_head_state" in rckpt:
+            e2e_head.load_state_dict(rckpt["e2e_head_state"], strict=False)
+        if cls_head is not None and "cls_head_state" in rckpt:
+            cls_head.load_state_dict(rckpt["cls_head_state"], strict=False)
+        print(f" [RESUME] 从 checkpoint 继续训练: {P1_RESUME_CKPT}")
 
     if P1_V5_PREDICTION_HEAD:
         opt_params = list(model.parameters())
@@ -441,6 +478,11 @@ def main():
     print("\n--- Training ---")
     epoch_train_losses = []
     epoch_val_losses = []
+    epoch_recon_losses = []
+    epoch_sspg_losses = []
+    epoch_di_losses = []
+    epoch_si_cvs = []
+    epoch_mi_cvs = []
     def _head_input_with_grad_control(x: torch.Tensor) -> torch.Tensor:
         if not P1_DETACH_HEAD_INPUT:
             return x
@@ -462,6 +504,9 @@ def main():
         if e2e_head is not None:
             e2e_head.train()
         train_loss = 0.0
+        recon_loss_epoch = 0.0
+        sspg_loss_epoch = 0.0
+        di_loss_epoch = 0.0
         for tup in train_loader:
             cgm, timestamps, meals, demographics, _, homa_ir_b, sspg_b, di_b, tri_b = tup
             optimizer.zero_grad()
@@ -474,6 +519,9 @@ def main():
                 head_in = _head_input_with_grad_control(head_in)
                 e2e_pred = e2e_head(head_in)
             loss = loss_fn(output, seq_q, nonseq_q, model.seq_p, model.nonseq_p, cgm)
+            recon_part = (remove_scale(output.states[..., 0:1]) - cgm).pow(2).mean()
+            batch_sspg_loss = torch.tensor(0.0, device=device)
+            batch_di_loss = torch.tensor(0.0, device=device)
             if LAMBDA_IDENTIFIABILITY > 0.0:
                 z_init_0 = output.states[:, 0, 0]
                 gb = output.param[:, 1]
@@ -486,20 +534,26 @@ def main():
                 if LAMBDA_SSPG > 0:
                     valid_sspg = torch.isfinite(sspg_b)
                     if valid_sspg.any():
-                        loss = loss + LAMBDA_SSPG * (e2e_pred[valid_sspg, 0] - sspg_b[valid_sspg]).pow(2).mean()
+                        batch_sspg_loss = (e2e_pred[valid_sspg, 0] - sspg_b[valid_sspg]).pow(2).mean()
+                        loss = loss + LAMBDA_SSPG * batch_sspg_loss
                 if LAMBDA_DI > 0:
                     valid_di = torch.isfinite(di_b)
                     if valid_di.any():
-                        loss = loss + LAMBDA_DI * (e2e_pred[valid_di, 1] - di_b[valid_di]).pow(2).mean()
+                        batch_di_loss = (e2e_pred[valid_di, 1] - di_b[valid_di]).pow(2).mean()
+                        loss = loss + LAMBDA_DI * batch_di_loss
             elif P1_HEAD_USE_26D and e2e_pred is not None:
                 if LAMBDA_SSPG > 0:
                     valid_sspg = torch.isfinite(sspg_b)
                     if valid_sspg.any():
-                        loss = loss + LAMBDA_SSPG * (e2e_pred[valid_sspg, 0] - sspg_b[valid_sspg]).pow(2).mean()
+                        target_sspg = (sspg_b[valid_sspg] - sspg_mean_t) / sspg_std_t if P1_ZSCORE_TARGETS else sspg_b[valid_sspg]
+                        batch_sspg_loss = (e2e_pred[valid_sspg, 0] - target_sspg).pow(2).mean()
+                        loss = loss + LAMBDA_SSPG * batch_sspg_loss
                 if LAMBDA_DI > 0:
                     valid_di = torch.isfinite(di_b)
                     if valid_di.any():
-                        loss = loss + LAMBDA_DI * (e2e_pred[valid_di, 1] - di_b[valid_di]).pow(2).mean()
+                        target_di = (di_b[valid_di] - di_mean_t) / di_std_t if P1_ZSCORE_TARGETS else di_b[valid_di]
+                        batch_di_loss = (e2e_pred[valid_di, 1] - target_di).pow(2).mean()
+                        loss = loss + LAMBDA_DI * batch_di_loss
             else:
                 # IR 弱监督：仅对 HOMA_IR 有效的样本算 MSE(log1p(HOMA_IR), ir_head(si, mi, tau_m))
                 valid = torch.isfinite(homa_ir_b) & (homa_ir_b >= 0)
@@ -511,18 +565,28 @@ def main():
                     loss = loss + LAMBDA_IR * loss_ir
                 # SSPG / DI 预测头弱监督：仅对有标签样本算 MSE
                 latent_all = _head_input_with_grad_control(latent_all)
+                latent_26d = None
+                if P1_SEPARATE_HEAD_26D and hasattr(model, "get_all_latents_for_head"):
+                    p26_h, init26_h, z16_h = model.get_all_latents_for_head(cgm, timestamps, meals, demographics)
+                    latent_26d = _head_input_with_grad_control(torch.cat([p26_h, init26_h, z16_h], dim=-1))
                 if LAMBDA_SSPG > 0.0 and sspg_head is not None:
                     valid_sspg = torch.isfinite(sspg_b)
                     if valid_sspg.any():
-                        sspg_in = latent_all[:, 3:4] if P1_DECOUPLE_SSPG else latent_all
+                        if latent_26d is not None:
+                            sspg_in = latent_26d
+                        else:
+                            sspg_in = latent_all[:, 3:4] if P1_DECOUPLE_SSPG else latent_all
                         sspg_pred = sspg_head(sspg_in).squeeze(-1)
                         target_sspg = (sspg_b[valid_sspg] - sspg_mean_t) / sspg_std_t if P1_ZSCORE_TARGETS else sspg_b[valid_sspg]
                         loss_sspg = (sspg_pred[valid_sspg] - target_sspg).pow(2).mean()
+                        batch_sspg_loss = loss_sspg
                         loss = loss + LAMBDA_SSPG * loss_sspg
                 if LAMBDA_DI > 0.0 and di_head is not None:
                     valid_di = torch.isfinite(di_b)
                     if valid_di.any():
-                        if P1_DI_MLP_HEAD:
+                        if latent_26d is not None:
+                            di_pred = di_head(latent_26d).squeeze(-1)
+                        elif P1_DI_MLP_HEAD:
                             si_mi_input = latent_all[:, [3, 5]]
                             di_pred = di_head(si_mi_input).squeeze(-1)
                         elif P1_DI_LOG_PRODUCT:
@@ -536,6 +600,7 @@ def main():
                             di_pred = di_head(latent_all).squeeze(-1)
                         target_di = (di_b[valid_di] - di_mean_t) / di_std_t if P1_ZSCORE_TARGETS else di_b[valid_di]
                         loss_di = (di_pred[valid_di] - target_di).pow(2).mean()
+                        batch_di_loss = loss_di
                         loss = loss + LAMBDA_DI * loss_di
             # 三分类辅助任务：Cross-Entropy(ignore_index=-1)
             if LAMBDA_CLS > 0.0 and cls_head is not None and P1_USE_TRI_CLASS:
@@ -545,6 +610,13 @@ def main():
                     logits = cls_head(latent_cls[valid_tri])
                     cls_loss = torch.nn.functional.cross_entropy(logits, tri_b[valid_tri].long())
                     loss = loss + LAMBDA_CLS * cls_loss
+            if LAMBDA_DIV > 0.0:
+                si_vec = output.param[:, 3]
+                mi_vec = output.param[:, 5]
+                si_cv_div = si_vec.std() / (si_vec.abs().mean() + 1e-8)
+                mi_cv_div = mi_vec.std() / (mi_vec.abs().mean() + 1e-8)
+                if torch.isfinite(si_cv_div) and torch.isfinite(mi_cv_div):
+                    loss = loss - LAMBDA_DIV * (si_cv_div + mi_cv_div)
             # 正交损失：惩罚 si 与 mi 的皮尔逊相关，促进解耦
             if LAMBDA_ORTHO > 0.0:
                 si_vec = latent_all[:, 3]
@@ -567,18 +639,39 @@ def main():
             torch.nn.utils.clip_grad_norm_(clip_params, 1.0)
             optimizer.step()
             train_loss += loss.item() * len(cgm)
+            recon_loss_epoch += recon_part.item() * len(cgm)
+            sspg_loss_epoch += batch_sspg_loss.item() * len(cgm)
+            di_loss_epoch += batch_di_loss.item() * len(cgm)
         train_loss /= len(train_tensors[0])
+        recon_loss_epoch /= len(train_tensors[0])
+        sspg_loss_epoch /= len(train_tensors[0])
+        di_loss_epoch /= len(train_tensors[0])
         with torch.no_grad():
             model.eval()
             out_v, _, _, _ = model(*val_tensors[:4])
             pred_v = remove_scale(out_v.states[..., 0:1])
             val_loss = (pred_v - val_tensors[0]).pow(2).mean().item()
+            out_tr, _, _, _ = model(*train_tensors[:4])
+            si_vec = out_tr.param[:, 3]
+            mi_vec = out_tr.param[:, 5]
+            si_cv = (si_vec.std() / (si_vec.abs().mean() + 1e-8)).item()
+            mi_cv = (mi_vec.std() / (mi_vec.abs().mean() + 1e-8)).item()
         epoch_train_losses.append(float(train_loss))
         epoch_val_losses.append(float(val_loss))
+        epoch_recon_losses.append(float(recon_loss_epoch))
+        epoch_sspg_losses.append(float(sspg_loss_epoch))
+        epoch_di_losses.append(float(di_loss_epoch))
+        epoch_si_cvs.append(float(si_cv))
+        epoch_mi_cvs.append(float(mi_cv))
         if scheduler is not None:
             scheduler.step()
         if (epoch + 1) % 20 == 0 or epoch == 0:
             print(f"Epoch {epoch+1}/{NUM_EPOCHS}  Train loss: {train_loss:.4f}  Val loss: {val_loss:.4f}")
+        if (epoch + 1) % 10 == 0:
+            with torch.no_grad():
+                gb_mean_dbg = float(out_tr.param[:, 1].mean().item())
+                si_cv_dbg = float(si_cv)
+                print(f"  [diag] epoch={epoch+1} Gb_mean={gb_mean_dbg:.1f} si_cv={si_cv_dbg:.3f} sspg_loss={sspg_loss_epoch:.4f} di_loss={di_loss_epoch:.4f}")
 
     # ---------- 4b. 验证集重建：每样本 MSE + 若干示例曲线（供 VAE 拟合诊断） ----------
     with torch.no_grad():
@@ -711,19 +804,25 @@ def main():
         else:
             lat_all = torch.as_tensor(param_all, dtype=torch.float, device=device)
             ir_all = ir_head(lat_all[:, IR_LATENT_IX]).squeeze(-1).cpu().numpy()
-            sspg_in_all = lat_all[:, 3:4] if P1_DECOUPLE_SSPG else lat_all
-            sspg_all = sspg_head(sspg_in_all).squeeze(-1).cpu().numpy()
-            if P1_DI_MLP_HEAD:
-                di_all = di_head(lat_all[:, [3, 5]]).squeeze(-1).cpu().numpy()
-            elif P1_DI_LOG_PRODUCT:
-                log_si_all = torch.log(lat_all[:, 3] + 1e-12)
-                log_mi_all = torch.log(lat_all[:, 5] + 1e-12)
-                log_sum_all = (log_si_all + log_mi_all).unsqueeze(-1)
-                di_all = di_head(log_sum_all).squeeze(-1).cpu().numpy()
-            elif P1_DI_PRODUCT_CONSTRAINT:
-                di_all = (lat_all[:, 3] * lat_all[:, 5]).cpu().numpy()
+            if P1_SEPARATE_HEAD_26D and hasattr(model, "get_all_latents"):
+                p26_all, init26_all, z16_all = model.get_all_latents(*all_tens)
+                lat_26_all = torch.cat([p26_all, init26_all, z16_all], dim=-1)
+                sspg_all = sspg_head(lat_26_all).squeeze(-1).cpu().numpy()
+                di_all = di_head(lat_26_all).squeeze(-1).cpu().numpy()
             else:
-                di_all = di_head(lat_all).squeeze(-1).cpu().numpy()
+                sspg_in_all = lat_all[:, 3:4] if P1_DECOUPLE_SSPG else lat_all
+                sspg_all = sspg_head(sspg_in_all).squeeze(-1).cpu().numpy()
+                if P1_DI_MLP_HEAD:
+                    di_all = di_head(lat_all[:, [3, 5]]).squeeze(-1).cpu().numpy()
+                elif P1_DI_LOG_PRODUCT:
+                    log_si_all = torch.log(lat_all[:, 3] + 1e-12)
+                    log_mi_all = torch.log(lat_all[:, 5] + 1e-12)
+                    log_sum_all = (log_si_all + log_mi_all).unsqueeze(-1)
+                    di_all = di_head(log_sum_all).squeeze(-1).cpu().numpy()
+                elif P1_DI_PRODUCT_CONSTRAINT:
+                    di_all = (lat_all[:, 3] * lat_all[:, 5]).cpu().numpy()
+                else:
+                    di_all = di_head(lat_all).squeeze(-1).cpu().numpy()
         if not (P1_V5_PREDICTION_HEAD or P1_HEAD_USE_26D) and P1_ZSCORE_TARGETS:
             sspg_all = sspg_all * sspg_std + sspg_mean
             di_all = di_all * di_std + di_mean
@@ -785,19 +884,25 @@ def main():
             if di_head is not None:
                 di_head.eval()
             lat_test_e2e = torch.as_tensor(param_test, dtype=torch.float, device=device)
-            sspg_in_e2e = lat_test_e2e[:, 3:4] if P1_DECOUPLE_SSPG else lat_test_e2e
-            sspg_pred_e2e = sspg_head(sspg_in_e2e).squeeze(-1).cpu().numpy()
-            if P1_DI_MLP_HEAD:
-                di_pred_e2e = di_head(lat_test_e2e[:, [3, 5]]).squeeze(-1).cpu().numpy()
-            elif P1_DI_LOG_PRODUCT:
-                log_si_test = torch.log(lat_test_e2e[:, 3] + 1e-12)
-                log_mi_test = torch.log(lat_test_e2e[:, 5] + 1e-12)
-                log_sum_test = (log_si_test + log_mi_test).unsqueeze(-1)
-                di_pred_e2e = di_head(log_sum_test).squeeze(-1).cpu().numpy()
-            elif P1_DI_PRODUCT_CONSTRAINT:
-                di_pred_e2e = (lat_test_e2e[:, 3] * lat_test_e2e[:, 5]).cpu().numpy()
+            if P1_SEPARATE_HEAD_26D and hasattr(model, "get_all_latents"):
+                p26_t, init26_t, z16_t = model.get_all_latents(*test_tensors[:4])
+                lat_test_26d = torch.cat([p26_t, init26_t, z16_t], dim=-1)
+                sspg_pred_e2e = sspg_head(lat_test_26d).squeeze(-1).cpu().numpy()
+                di_pred_e2e = di_head(lat_test_26d).squeeze(-1).cpu().numpy()
             else:
-                di_pred_e2e = di_head(lat_test_e2e).squeeze(-1).cpu().numpy()
+                sspg_in_e2e = lat_test_e2e[:, 3:4] if P1_DECOUPLE_SSPG else lat_test_e2e
+                sspg_pred_e2e = sspg_head(sspg_in_e2e).squeeze(-1).cpu().numpy()
+                if P1_DI_MLP_HEAD:
+                    di_pred_e2e = di_head(lat_test_e2e[:, [3, 5]]).squeeze(-1).cpu().numpy()
+                elif P1_DI_LOG_PRODUCT:
+                    log_si_test = torch.log(lat_test_e2e[:, 3] + 1e-12)
+                    log_mi_test = torch.log(lat_test_e2e[:, 5] + 1e-12)
+                    log_sum_test = (log_si_test + log_mi_test).unsqueeze(-1)
+                    di_pred_e2e = di_head(log_sum_test).squeeze(-1).cpu().numpy()
+                elif P1_DI_PRODUCT_CONSTRAINT:
+                    di_pred_e2e = (lat_test_e2e[:, 3] * lat_test_e2e[:, 5]).cpu().numpy()
+                else:
+                    di_pred_e2e = di_head(lat_test_e2e).squeeze(-1).cpu().numpy()
             if P1_ZSCORE_TARGETS:
                 sspg_pred_e2e = sspg_pred_e2e * sspg_std + sspg_mean
                 di_pred_e2e = di_pred_e2e * di_std + di_mean
@@ -825,6 +930,19 @@ def main():
             }, f, indent=2)
     with open(os.path.join(RESULTS_DIR, "training_curves.json"), "w") as f:
         json.dump({"epoch": list(range(1, NUM_EPOCHS + 1)), "train_loss": epoch_train_losses, "val_loss": epoch_val_losses}, f, indent=0)
+    with open(os.path.join(RESULTS_DIR, "training_metrics.json"), "w") as f:
+        json.dump(
+            {
+                "epoch": list(range(1, NUM_EPOCHS + 1)),
+                "recon_loss": epoch_recon_losses,
+                "sspg_loss": epoch_sspg_losses,
+                "di_loss": epoch_di_losses,
+                "si_cv": epoch_si_cvs,
+                "mi_cv": epoch_mi_cvs,
+            },
+            f,
+            indent=0,
+        )
     ckpt = {
         "model_state": model.state_dict(),
         "ir_head_state": ir_head.state_dict(),
@@ -834,6 +952,7 @@ def main():
         "LAMBDA_DI": LAMBDA_DI,
         "LAMBDA_IDENTIFIABILITY": LAMBDA_IDENTIFIABILITY,
         "LAMBDA_ORTHO": LAMBDA_ORTHO,
+        "LAMBDA_DIV": LAMBDA_DIV,
         "G_mean": G_mean.cpu(),
         "G_std": G_std.cpu(),
         "train_mean": [np.array(t) for t in train_mean],
@@ -843,6 +962,7 @@ def main():
         "P1_DI_PRODUCT_CONSTRAINT": P1_DI_PRODUCT_CONSTRAINT,
         "P1_DI_LOG_PRODUCT": P1_DI_LOG_PRODUCT,
         "P1_DI_MLP_HEAD": P1_DI_MLP_HEAD,
+        "P1_SEPARATE_HEAD_26D": P1_SEPARATE_HEAD_26D,
         "P1_DETACH_HEAD_INPUT": P1_DETACH_HEAD_INPUT,
         "P1_HEAD_GRAD_SCALE": P1_HEAD_GRAD_SCALE,
         "P1_V8_HEAD_10D": P1_V8_HEAD_10D,

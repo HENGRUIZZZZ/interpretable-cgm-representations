@@ -1,0 +1,241 @@
+subject_id,timestamp,meal_type,meal_code,description,repeat,meal_category,carb_g
+D4_2133-001,2016-08-04 08:10:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-002,2016-09-14 11:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-004,2016-09-27 09:10:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-006,2016-11-01 10:00:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-008,2016-11-24 11:15:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-009,2016-11-30 09:10:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-010,2016-11-24 06:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-011,2017-01-13 08:50:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-012,2017-01-12 07:50:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-013,2017-01-19 07:40:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-015,2017-02-01 08:00:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-017,2017-03-25 09:00:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-018,2017-03-15 09:10:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-019,2017-03-31 07:50:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-020,2017-03-18 07:50:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-021,2017-03-18 07:55:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-022,2017-04-09 07:00:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-024,2017-04-19 08:45:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-025,2017-04-25 09:10:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-026,2017-04-21 08:40:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-028,2017-06-08 07:50:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-030,2017-05-16 09:15:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-032,2017-05-22 06:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-033,2017-05-20 07:45:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-035,2017-06-09 00:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-036,2017-06-04 07:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-037,2017-06-08 07:55:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-039,2017-06-06 06:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-040,2017-06-30 07:45:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-041,2017-07-16 05:30:00,PB_sandwich,PB 1,Peanut butter sandwich #1,1,standard_meal,
+D4_2133-001,2016-08-06 08:30:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-002,2016-09-23 07:50:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-004,2016-09-30 10:25:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-006,2016-11-03 10:05:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-008,2016-11-29 08:20:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-009,2016-12-02 09:05:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-010,2016-11-26 10:00:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-011,2017-01-24 09:15:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-012,2017-01-13 08:00:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-013,2017-01-21 06:30:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-015,2017-02-05 08:15:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-019,2017-03-16 08:00:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-020,2017-03-20 07:10:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-021,2017-03-20 07:10:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-022,2017-04-10 07:15:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-024,2017-04-26 08:45:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-025,2017-05-02 09:15:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-026,2017-04-25 09:15:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-028,2017-06-09 06:45:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-030,2017-05-17 08:15:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-032,2017-06-10 08:50:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-033,2017-05-27 08:45:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-035,2017-06-13 09:00:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-036,2017-06-06 10:20:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-037,2017-06-15 07:10:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-039,2017-06-18 08:00:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-040,2017-07-01 07:50:00,PB_sandwich,PB 2,Peanut butter sandwich #2,2,standard_meal,
+D4_2133-001,2016-08-08 07:50:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-002,2016-09-11 11:55:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-004,2016-09-23 09:40:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-006,2016-11-05 08:25:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-008,2016-12-03 10:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-009,2016-11-27 10:10:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-010,2016-11-22 09:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-011,2017-01-14 08:50:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-012,2017-01-15 09:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-013,2017-01-16 08:30:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-015,2017-02-08 08:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-017,2017-03-15 07:40:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-018,2017-03-16 06:45:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-019,2017-04-01 06:20:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-020,2017-03-23 06:40:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-021,2017-03-23 06:40:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-022,2017-03-30 06:30:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-024,2017-04-18 08:45:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-025,2017-04-24 09:45:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-026,2017-04-23 10:05:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-028,2017-06-04 08:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-030,2017-05-23 09:55:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-032,2017-06-07 09:25:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-033,2017-05-22 06:55:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-035,2017-06-08 08:30:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-036,2017-06-03 08:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-037,2017-06-06 08:45:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-039,2017-06-11 05:50:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-040,2017-07-03 07:30:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-041,2017-07-05 06:00:00,Cornflakes,CF 1,Cornflakes with milk #1,1,standard_meal,
+D4_2133-001,2016-08-10 06:50:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-002,2016-09-20 12:20:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-004,2016-09-24 08:35:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-006,2016-11-06 08:40:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-008,2016-12-01 09:00:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-009,2016-11-29 09:15:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-010,2016-11-25 10:00:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-011,2017-01-18 07:40:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-012,2017-01-16 08:10:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-013,2017-01-17 05:30:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-015,2017-02-12 08:30:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-017,2017-03-19 09:45:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-018,2017-03-19 07:30:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-019,2017-03-26 09:00:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-020,2017-03-31 07:30:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-021,2017-03-30 06:20:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-022,2017-04-02 07:50:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-024,2017-04-25 10:25:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-025,2017-04-28 10:55:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-026,2017-04-24 09:50:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-028,2017-06-05 08:15:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-030,2017-05-29 07:30:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-032,2017-06-13 09:25:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-033,2017-05-31 07:20:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-035,2017-06-21 08:30:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-036,2017-06-07 10:05:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-037,2017-06-09 06:15:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-039,2017-06-12 05:00:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-040,2017-07-04 09:15:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-041,2017-07-09 06:00:00,Cornflakes,CF 2,Cornflakes with milk #2,2,standard_meal,
+D4_2133-001,2016-08-12 07:50:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-002,2016-09-16 11:45:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-004,2016-10-01 08:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-006,2016-11-04 09:40:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-008,2016-11-23 07:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-009,2016-11-22 08:15:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-010,2016-11-23 09:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-011,2017-01-15 08:15:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-012,2017-01-14 08:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-013,2017-01-12 07:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-015,2017-02-14 08:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-017,2017-03-16 06:45:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-018,2017-03-17 08:35:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-019,2017-03-30 07:45:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-020,2017-03-26 06:50:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-021,2017-03-25 08:15:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-022,2017-03-29 06:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-024,2017-04-20 08:45:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-025,2017-05-03 08:35:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-026,2017-04-22 08:50:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-028,2017-05-14 08:15:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-030,2017-05-05 09:30:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-032,2017-06-06 08:10:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-033,2017-05-24 06:45:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-035,2017-06-14 09:00:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-036,2017-06-02 08:15:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-037,2017-06-07 08:15:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-039,2017-06-07 05:10:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-040,2017-07-08 07:50:00,Protein_bar,Bar 1,Protein bar (CLIF) #1,1,standard_meal,
+D4_2133-001,2016-08-14 08:35:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-002,2016-09-18 11:35:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-004,2016-10-02 10:35:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-006,2016-11-02 09:40:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-008,2016-11-25 08:20:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-009,2016-11-24 08:05:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-010,2016-11-27 09:30:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-011,2017-01-25 07:25:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-012,2017-01-17 07:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-013,2017-01-20 07:25:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-015,2017-02-13 08:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-017,2017-03-23 06:50:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-018,2017-03-18 07:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-019,2017-03-23 08:15:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-020,2017-03-27 07:20:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-021,2017-03-26 06:45:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-022,2017-04-01 07:50:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-024,2017-04-27 09:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-025,2017-05-04 08:30:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-026,2017-04-26 10:15:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-028,2017-05-15 06:45:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-030,2017-05-06 09:30:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-032,2017-06-15 10:05:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-033,2017-05-29 07:50:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-035,2017-06-20 05:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-036,2017-06-05 06:30:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-037,2017-06-12 08:40:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-039,2017-06-19 06:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-040,2017-07-13 08:05:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_2133-041,2017-07-20 05:00:00,Protein_bar,Bar 2,Protein bar (CLIF) #2,2,standard_meal,
+D4_1636-69-001,2013-11-11 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-026,2016-11-30 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-028,2015-10-05 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-032,2015-09-23 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-035,2016-08-17 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-036,2016-08-17 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-048,2016-05-11 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-053,2015-07-10 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-060,2015-06-09 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-064,2015-09-15 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-069,2016-11-03 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-090,2015-05-14 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-091,2016-02-16 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-098,2015-06-09 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-100,2015-06-23 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-104,2015-07-07 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-107,2015-07-23 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-111,2015-09-03 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-114,2015-09-03 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-69-123,2016-01-28 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-70-1002,2015-04-06 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-70-1003,2015-09-16 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-70-1005,2017-03-08 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-70-1006,2016-08-08 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-70-1008,2015-03-20 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_1636-70-1010,2016-09-01 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-001,2016-08-02 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-002,2016-09-09 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-003,2016-04-21 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-004,2016-09-20 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-005,2016-08-19 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-006,2016-11-18 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-007,2016-11-30 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-009,2016-12-16 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-010,2017-03-03 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-011,2017-01-26 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-012,2017-01-24 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-013,2017-01-18 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-015,2016-12-05 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-017,2017-04-03 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-018,2017-03-20 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-020,2014-03-17 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-021,2017-03-17 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-022,2016-01-29 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-023,2017-04-28 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-024,2017-04-21 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-025,2017-04-26 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-026,2017-05-18 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-027,2017-05-04 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-028,2017-05-03 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-029,2017-05-05 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-030,2017-05-11 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-031,2017-05-12 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-032,2017-06-27 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-033,2017-07-19 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-035,2017-07-27 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-036,2017-06-12 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-037,2017-06-14 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-039,2017-06-22 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-040,2017-07-06 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-041,2017-07-21 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-042,2017-07-26 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-043,2017-08-10 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0
+D4_2133-044,2017-07-28 00:00:00,OGTT_75g,OGTT,Oral Glucose Tolerance Test (75g glucose),1,OGTT,75.0

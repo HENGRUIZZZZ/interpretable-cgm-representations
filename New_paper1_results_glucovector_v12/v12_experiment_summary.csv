@@ -1,0 +1,3 @@
+experiment,sspg_pearson_r,di_pearson_r,sspg_rmse,di_rmse,ode_shap_share
+Exp2_GlucoVectorV12_26D_Semi_FixedData,,,85.10164956184948,0.7688736479646994,0.27434987581632675
+Exp3_DataAblation_OldData_26D_Semi,,,85.10164956184948,0.7688736479646994,0.15519681338768745

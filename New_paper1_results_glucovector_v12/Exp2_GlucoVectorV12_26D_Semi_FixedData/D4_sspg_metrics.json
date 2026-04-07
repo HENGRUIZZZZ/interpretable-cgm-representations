@@ -1,0 +1,10 @@
+{
+  "n": 16,
+  "pearson_r": NaN,
+  "pearson_p": NaN,
+  "spearman_r": NaN,
+  "spearman_p": NaN,
+  "r2": -0.003900446380538769,
+  "rmse": 85.10164956184948,
+  "mae": 66.81051635742188
+}
