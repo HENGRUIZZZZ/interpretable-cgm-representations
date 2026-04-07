@@ -1,0 +1,22 @@
+{
+  "tau_m_mean": 159.3726893402062,
+  "tau_m_std": 34.250138908044256,
+  "tau_m_cv": 0.21490594811249536,
+  "Gb_mean": 144.61579916494844,
+  "Gb_std": 45.67884800306848,
+  "Gb_cv": 0.3158634690239388,
+  "si_mean": 0.003602233413969072,
+  "si_std": 0.0007867222861520196,
+  "si_cv": 0.21839786925592092,
+  "mi_mean": 2.348519235072165,
+  "mi_std": 0.645683819371451,
+  "mi_cv": 0.2749323092524245,
+  "tau_m_hit_hi_narrow_pct": 0.0,
+  "Gb_hit_hi_narrow_pct": 0.0,
+  "si_hit_hi_narrow_pct": 0.0,
+  "mi_hit_hi_narrow_pct": 0.0,
+  "tau_m_hit_hi_wide_pct": 0.0,
+  "Gb_hit_hi_wide_pct": 0.0,
+  "si_hit_hi_wide_pct": 0.0,
+  "mi_hit_hi_wide_pct": 0.0
+}

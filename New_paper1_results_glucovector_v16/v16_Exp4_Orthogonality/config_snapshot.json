@@ -1,0 +1,9 @@
+{
+  "name": "v16_Exp4_Orthogonality",
+  "train_datasets": "D1,D2",
+  "test_dataset": "D4",
+  "phase2_extra_env": {
+    "LAMBDA_ORTHO_16D": "0.1",
+    "P1_FINETUNE_16D_ONLY": "1"
+  }
+}

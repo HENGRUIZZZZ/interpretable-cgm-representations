@@ -1,0 +1,6 @@
+{
+  "name": "v16_Exp2_LODO_D2",
+  "train_datasets": "D1",
+  "test_dataset": "D2",
+  "phase2_extra_env": {}
+}

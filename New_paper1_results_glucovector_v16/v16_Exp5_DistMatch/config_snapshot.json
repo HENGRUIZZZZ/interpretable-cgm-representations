@@ -1,0 +1,8 @@
+{
+  "name": "v16_Exp5_DistMatch",
+  "train_datasets": "D1,D2",
+  "test_dataset": "D4",
+  "phase2_extra_env": {
+    "LAMBDA_VAR_MATCH": "0.05"
+  }
+}

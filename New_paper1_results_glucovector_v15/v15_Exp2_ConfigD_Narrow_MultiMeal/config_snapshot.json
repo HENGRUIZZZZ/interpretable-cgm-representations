@@ -1,0 +1,21 @@
+{
+  "name": "v15_Exp2_ConfigD_Narrow_MultiMeal",
+  "env": {
+    "P1_LR": "1e-2",
+    "P1_SEED": "42",
+    "P1_USE_LR_SCHEDULER": "1",
+    "P1_SAVE_26D_LATENT": "1",
+    "P1_ZSCORE_TARGETS": "1",
+    "P1_V8_ODE_CORR": "0",
+    "P1_V8_RECON_CORR": "0",
+    "LAMBDA_CLS": "0.0",
+    "P1_HEAD_USE_26D": "1",
+    "P1_V8_HEAD_10D": "0",
+    "P1_SEPARATE_HEAD_26D": "0",
+    "P1_V10_WIDE_BOUNDS": "0",
+    "P1_ONE_MEAL_PER_SUBJECT": "0",
+    "LAMBDA_IR": "0.05"
+  },
+  "lambda_sspg": 0.1,
+  "lambda_di": 0.1
+}

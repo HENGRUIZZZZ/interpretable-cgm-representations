@@ -1,0 +1,26 @@
+{
+  "guide_requirements_mapped": {
+    "exp_count": 5,
+    "multi_meal_exps": [
+      "Exp1",
+      "Exp2",
+      "Exp4",
+      "Exp5"
+    ],
+    "one_meal_exp": [
+      "Exp3"
+    ],
+    "two_phase_exps": [
+      "Exp3",
+      "Exp4",
+      "Exp5"
+    ],
+    "finetune_16d_only_exp": [
+      "Exp5"
+    ]
+  },
+  "artifacts": {
+    "summary_csv": "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v15/v15_summary.csv",
+    "report_md": "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v15/v15_report.md"
+  }
+}
