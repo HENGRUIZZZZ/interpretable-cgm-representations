@@ -1,0 +1,7 @@
+claim,source,metric,value,status
+26D improves SSPG ranking vs 10D,v22_paired_bootstrap_deltas.csv,delta_spearman,"0.170 [-0.023,0.506]",trend_only
+26D beats Metwally on SSPG ranking,v22_paired_bootstrap_deltas.csv,delta_spearman,"-0.048 [-0.272,0.150]",not_confirmed
+26D improves IR AUROC vs Metwally,v22_secondary_clinical_endpoints.csv,delta_ir_auc,0.017,supported
+26D improves Decomp AUROC vs Metwally,v22_secondary_clinical_endpoints.csv,delta_decomp_auc,0.064,supported
+16D utility increases in high-uncertainty meals,v22_16d_conditional_utility.csv,win26_rate_high_minus_low,0.211,supported
+16D predicts residuals not explained by Metwally,v22_beyond_metwally_summary.json,residual_spearman,0.517,supported

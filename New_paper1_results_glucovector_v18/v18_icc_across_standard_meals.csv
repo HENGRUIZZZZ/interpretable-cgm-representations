@@ -1,0 +1,7 @@
+experiment,n_subjects_sspg,n_subjects_di,meal_types,icc_sspg_pred,icc_di_pred
+v18_Exp1_Wang_Baseline,30,30,Cornflakes|PB_sandwich|Protein_bar,,
+v18_Exp5_GV_Baseline,30,30,Cornflakes|PB_sandwich|Protein_bar,0.6249209330463403,0.6206529670599488
+v18_Exp6_Separate_Heads,30,30,Cornflakes|PB_sandwich|Protein_bar,0.6669444750923315,0.5571668056269266
+v18_Exp7_EarlyStop,30,30,Cornflakes|PB_sandwich|Protein_bar,0.5970903198722648,0.5323457901995301
+v18_Exp8_CorrLoss,30,30,Cornflakes|PB_sandwich|Protein_bar,0.5660246041808648,0.5028176478583438
+v18_Exp9_Full_Combo,30,30,Cornflakes|PB_sandwich|Protein_bar,0.46474298397960395,0.6489610495200777

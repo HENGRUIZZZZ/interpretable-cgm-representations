@@ -92,6 +92,15 @@ def _build_e2e_head(input_dim: int = 26) -> torch.nn.Module:
     )
 
 
+def _build_small_head(input_dim: int = 26) -> torch.nn.Module:
+    return torch.nn.Sequential(
+        torch.nn.Linear(input_dim, 16),
+        torch.nn.ReLU(),
+        torch.nn.Dropout(0.3),
+        torch.nn.Linear(16, 1),
+    )
+
+
 def _infer_e2e_input_dim(e2e_state: Dict[str, torch.Tensor]) -> int:
     # first linear layer weight shape: [64, input_dim]
     w = e2e_state.get("0.weight", None)
@@ -193,12 +202,29 @@ def eval_ckpt_on_d4(
     model.load_state_dict(ckpt["model_state"], strict=False)
     model.eval()
 
-    if "e2e_head_state" not in ckpt:
-        raise RuntimeError("Checkpoint missing e2e_head_state; cannot compute SSPG/DI predictions.")
-    e2e_in_dim = _infer_e2e_input_dim(ckpt["e2e_head_state"])
-    e2e = _build_e2e_head(e2e_in_dim).to(device)
-    e2e.load_state_dict(ckpt["e2e_head_state"], strict=True)
-    e2e.eval()
+    separate_heads = False
+    if "e2e_head_state" in ckpt:
+        e2e_in_dim = _infer_e2e_input_dim(ckpt["e2e_head_state"])
+        e2e = _build_e2e_head(e2e_in_dim).to(device)
+        e2e.load_state_dict(ckpt["e2e_head_state"], strict=True)
+        e2e.eval()
+        sspg_h = None
+        di_h = None
+    elif "sspg_head_state" in ckpt and "di_head_state" in ckpt:
+        # v18 separate heads fallback
+        separate_heads = True
+        w = ckpt["sspg_head_state"].get("0.weight", None)
+        in_dim = int(w.shape[1]) if w is not None else 26
+        e2e_in_dim = in_dim
+        e2e = None
+        sspg_h = _build_small_head(in_dim).to(device)
+        di_h = _build_small_head(in_dim).to(device)
+        sspg_h.load_state_dict(ckpt["sspg_head_state"], strict=True)
+        di_h.load_state_dict(ckpt["di_head_state"], strict=True)
+        sspg_h.eval()
+        di_h.eval()
+    else:
+        raise RuntimeError("Checkpoint missing compatible prediction head state.")
 
     b, info, lab = _load_d4_batch(cgm_project_output)
 
@@ -218,7 +244,12 @@ def eval_ckpt_on_d4(
     with torch.no_grad():
         p26, init26, z16 = model.get_all_latents(*tens)
         head_in = torch.cat([p26, init26], dim=-1) if e2e_in_dim == 10 else torch.cat([p26, init26, z16], dim=-1)
-        pred_2 = e2e(head_in).detach().cpu().numpy()
+        if separate_heads:
+            s = sspg_h(head_in).squeeze(-1)
+            d = di_h(head_in).squeeze(-1)
+            pred_2 = torch.stack([s, d], dim=-1).detach().cpu().numpy()
+        else:
+            pred_2 = e2e(head_in).detach().cpu().numpy()
 
     # Convert to per-sample pred values
     sspg_hat = pred_2[:, 0].astype(np.float64)

@@ -1,0 +1,3 @@
+task,feature_set,accuracy,macro_f1,n
+meal_type_classification,16D,0.37631887456037516,0.1965104044063673,1706
+meal_type_classification,16D_plus_circadian,0.6014067995310668,0.3357998145717119,1706

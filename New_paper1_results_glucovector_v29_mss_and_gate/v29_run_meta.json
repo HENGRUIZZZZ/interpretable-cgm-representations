@@ -1,0 +1,5 @@
+{
+  "generated": "2026-04-08T02:17:16.505723",
+  "d5_note": "Encoder sees pre-meal CGM only: post 0..180 min held flat at meal-start glucose (no post-excursion leakage). Targets still from true post curve. MSS mmol/L->mg/dL. Meal macros zero.",
+  "d4_note": "Subject-level LOOCV; gate sees z16 + meal context aggregates + meal-type counts; alpha tuned on train MSE (in-fold)."
+}

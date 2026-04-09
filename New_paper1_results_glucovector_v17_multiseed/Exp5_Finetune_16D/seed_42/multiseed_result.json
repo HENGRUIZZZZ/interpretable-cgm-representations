@@ -1,0 +1,67 @@
+{
+  "config": "Exp5_Finetune_16D",
+  "seed": 42,
+  "ckpt": "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v17_multiseed/Exp5_Finetune_16D/seed_42/phase2_finetune_head/autoencoder_p1_full.pt",
+  "sspg": {
+    "target": "sspg",
+    "train_metric": {
+      "n": 63,
+      "pearson_r": 0.3883549641269009,
+      "spearman_r": 0.3549270334907937,
+      "r2": 0.08983904056667247,
+      "rmse": 70.99809558097947,
+      "mae": 61.2784350427997
+    },
+    "d4_raw_metric": {
+      "n": 20,
+      "pearson_r": 0.5952318790986992,
+      "spearman_r": 0.6105263157894737,
+      "r2": 0.1149972879725284,
+      "rmse": 75.09073031433793,
+      "mae": 59.96451200341776
+    },
+    "d4_cal_metric": {
+      "n": 20,
+      "pearson_r": 0.595231879098699,
+      "spearman_r": 0.6105263157894737,
+      "r2": 0.22648233347360414,
+      "rmse": 70.20194519199326,
+      "mae": 51.353949572819715
+    },
+    "calibration": {
+      "a": 1.2293172529235696,
+      "b": -50.8337321322076
+    }
+  },
+  "di": {
+    "target": "di",
+    "train_metric": {
+      "n": 63,
+      "pearson_r": 0.4215188595978981,
+      "spearman_r": 0.46568339197132164,
+      "r2": 0.1054610681408511,
+      "rmse": 1.0628842057909604,
+      "mae": 0.7611919483311244
+    },
+    "d4_raw_metric": {
+      "n": 16,
+      "pearson_r": 0.6711856034891523,
+      "spearman_r": 0.6647058823529411,
+      "r2": 0.3230196184447518,
+      "rmse": 0.5965212319412088,
+      "mae": 0.4440929383581161
+    },
+    "d4_cal_metric": {
+      "n": 16,
+      "pearson_r": 0.671185603489152,
+      "spearman_r": 0.6647058823529411,
+      "r2": 0.32406758249025014,
+      "rmse": 0.5960593463873949,
+      "mae": 0.5117314786166718
+    },
+    "calibration": {
+      "a": 1.31866527511367,
+      "b": -0.19421362683301102
+    }
+  }
+}

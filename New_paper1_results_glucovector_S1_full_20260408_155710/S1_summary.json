@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-04-08T15:59:24.430959",
+  "output_root": "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_S1_full_20260408_155710",
+  "plan_a_model": "GV_Baseline(Exp5)",
+  "plan_a_sspg_spearman": 0.7593984962406014,
+  "plan_a_di_spearman": 0.6617647058823529,
+  "plan_a_ir_auroc": 0.9034090909090908,
+  "plan_a_decomp_auroc": 0.928,
+  "plan_a_icc_sspg": -0.0592838477866407,
+  "plan_b_ckpt": "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_S1_full_20260408_155710/S1_planB_E2E_10D/autoencoder_p1_full.pt",
+  "plan_b_sspg_spearman": 0.793984962406015,
+  "plan_b_di_spearman": 0.5441176470588236,
+  "plan_b_sspg_spearman_ci": [
+    0.540528919778537,
+    0.9439347990902199
+  ],
+  "plan_b_di_spearman_ci": [
+    0.026407967032967047,
+    0.8748183681073024
+  ],
+  "plan_b_ir_auroc": 0.9034090909090908,
+  "plan_b_decomp_auroc": 0.904,
+  "plan_b_icc_sspg": -0.23644124415838247,
+  "plan_b_si_vs_sspg_spearman": -0.5789473684210527,
+  "plan_b_mi_vs_di_spearman": 0.7088235294117646,
+  "criteria": {
+    "C1_param_alignment": true,
+    "C2_accuracy": false,
+    "C3_icc": false,
+    "all_pass": false
+  }
+}

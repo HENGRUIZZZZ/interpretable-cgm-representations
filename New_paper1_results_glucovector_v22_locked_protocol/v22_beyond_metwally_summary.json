@@ -1,0 +1,6 @@
+{
+  "n": 20,
+  "residual_spearman_pred_vs_true": 0.5172932330827067,
+  "residual_r2_cv": 0.02819012062401971,
+  "residual_rmse_cv": 68.91855740947476
+}

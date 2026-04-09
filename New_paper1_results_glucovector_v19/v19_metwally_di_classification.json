@@ -1,0 +1,6 @@
+{
+  "threshold": 1.0,
+  "auroc": 1.0,
+  "auroc_ci_lo": 0.9999999999999999,
+  "auroc_ci_hi": 1.0
+}

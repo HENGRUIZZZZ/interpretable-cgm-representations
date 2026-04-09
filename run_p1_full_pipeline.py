@@ -37,6 +37,16 @@ LAMBDA_ORTHO = float(os.environ.get("LAMBDA_ORTHO", "0.0"))
 LAMBDA_ORTHO_16D = float(os.environ.get("LAMBDA_ORTHO_16D", "0.0"))
 # v13 update3: 防止 si/mi 坍缩的多样性惩罚
 LAMBDA_DIV = float(os.environ.get("LAMBDA_DIV", "0.0"))
+# === v18 patches ===
+# Early Stopping: patience (0=disabled)
+V18_EARLY_STOPPING_PATIENCE = int(os.environ.get("V18_EARLY_STOPPING_PATIENCE", "0"))
+# CorrLoss: alpha weight for Pearson correlation loss (0=pure MSE, 1=pure CorrLoss)
+V18_CORR_LOSS_ALPHA = float(os.environ.get("V18_CORR_LOSS_ALPHA", "0.0"))
+# Separate small heads: 26D→16→1 for SSPG and DI independently
+V18_SEPARATE_SMALL_HEAD = os.environ.get("V18_SEPARATE_SMALL_HEAD", "").strip().lower() in ("1", "true", "yes")
+# Phase 1 orthogonality: penalize correlation between 16D and 10D latents
+V18_LAMBDA_ORTHO_P1 = float(os.environ.get("V18_LAMBDA_ORTHO_P1", "0.0"))
+# === end v18 patches ===
 # v16: 预测值方差匹配，缓解预测压缩到均值
 LAMBDA_VAR_MATCH = float(os.environ.get("LAMBDA_VAR_MATCH", "0.0"))
 # 对 SSPG/DI 真值 z-score 后再算 loss，预测时反标准化；可稳定 M1 多目标训练
@@ -349,12 +359,15 @@ def main():
         else:
             model.load_state_dict(ckpt, strict=False)
         if P1_FINETUNE_16D_ONLY:
-            # v15 Exp5: freeze ODE/reconstruction path, only open 16D projection branch.
+            # v17: freeze ODE/reconstruction path, only open 16D data-driven branch.
             for name, p in model.named_parameters():
                 p.requires_grad = False
-                if "nonseq_to_16" in name:
+                if ("nonseq_to_16" in name) or ("non_seq_proj" in name):
                     p.requires_grad = True
-            print(f" [V15] 已加载预训练模型并冻结主干，仅开放16D分支: {P1_PRETRAINED_MODEL}")
+            n_open = sum(1 for p in model.parameters() if p.requires_grad)
+            n_all = sum(1 for _ in model.parameters())
+            print(f" [V17] 已加载预训练模型并冻结主干，仅开放16D分支: {P1_PRETRAINED_MODEL}")
+            print(f" [V17] 16D分支可训练参数: {n_open}/{n_all}")
         else:
             for p in model.parameters():
                 p.requires_grad = False
@@ -377,18 +390,35 @@ def main():
             head_input_dim = n_ode_params + z_init_dim
         else:
             head_input_dim = n_ode_params + z_init_dim + z_nonseq_dim
-        e2e_head = torch.nn.Sequential(
-            torch.nn.Linear(head_input_dim, 64),
-            torch.nn.ReLU(),
-            torch.nn.Dropout(0.3),
-            torch.nn.Linear(64, 32),
-            torch.nn.ReLU(),
-            torch.nn.Linear(32, 2),
-        ).to(device)
-        if P1_V8_HEAD_10D:
-            print(f" [V8 Config A] e2e_head 使用 10D 机制特征 (dim={head_input_dim})")
+        if V18_SEPARATE_SMALL_HEAD and not P1_V8_HEAD_10D:
+            # v18: 分离小头 — 每个头 26D→16→ReLU→Dropout→1 (参数: 26*16+16+16*1+1=449)
+            e2e_head = None
+            sspg_head = torch.nn.Sequential(
+                torch.nn.Linear(head_input_dim, 16),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(0.3),
+                torch.nn.Linear(16, 1),
+            ).to(device)
+            di_head = torch.nn.Sequential(
+                torch.nn.Linear(head_input_dim, 16),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(0.3),
+                torch.nn.Linear(16, 1),
+            ).to(device)
+            print(f" [V18] Separate small heads: SSPG/DI each 26D→16→1 (dim={head_input_dim})")
         else:
-            print(f" [V6/V8] e2e_head 使用 26D 全 latent (dim={head_input_dim})")
+            e2e_head = torch.nn.Sequential(
+                torch.nn.Linear(head_input_dim, 64),
+                torch.nn.ReLU(),
+                torch.nn.Dropout(0.3),
+                torch.nn.Linear(64, 32),
+                torch.nn.ReLU(),
+                torch.nn.Linear(32, 2),
+            ).to(device)
+            if P1_V8_HEAD_10D:
+                print(f" [V8 Config A] e2e_head 使用 10D 机制特征 (dim={head_input_dim})")
+            else:
+                print(f" [V6/V8] e2e_head 使用 26D 全 latent (dim={head_input_dim})")
     else:
         if P1_SEPARATE_HEAD_26D:
             head_input_dim = n_ode_params + z_init_dim + z_nonseq_dim
@@ -408,7 +438,8 @@ def main():
         else:
             # 预测头：SSPG 解耦模式下仅用 si (1维)；否则 6D。DI：MLP(si,mi) / LogProduct(1,1) / 乘积无头 / 6D线性
             sspg_head = torch.nn.Linear(1 if P1_DECOUPLE_SSPG else len(PARAM_NAMES), 1).to(device)
-    if not P1_V5_PREDICTION_HEAD and P1_DI_MLP_HEAD:
+    v18_sep_mode = (P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and not P1_V8_HEAD_10D)
+    if (not P1_V5_PREDICTION_HEAD) and (not v18_sep_mode) and P1_DI_MLP_HEAD:
         di_head = torch.nn.Sequential(
             torch.nn.Linear(2, 16),
             torch.nn.ReLU(),
@@ -417,12 +448,12 @@ def main():
             torch.nn.Linear(8, 1),
         ).to(device)
         print(" [MLP_HEAD] DI head: MLP(2→16→8→1) on [si, mi]")
-    elif not P1_V5_PREDICTION_HEAD and P1_DI_LOG_PRODUCT:
+    elif (not P1_V5_PREDICTION_HEAD) and (not v18_sep_mode) and P1_DI_LOG_PRODUCT:
         di_head = torch.nn.Linear(1, 1).to(device)
         print(" [LOG-PRODUCT] DI head: Linear(1,1) on log(si)+log(mi)")
-    elif P1_DI_PRODUCT_CONSTRAINT and not P1_V5_PREDICTION_HEAD and not P1_SEPARATE_HEAD_26D:
+    elif P1_DI_PRODUCT_CONSTRAINT and (not P1_V5_PREDICTION_HEAD) and (not P1_SEPARATE_HEAD_26D) and (not v18_sep_mode):
         di_head = None
-    elif not P1_V5_PREDICTION_HEAD and not P1_SEPARATE_HEAD_26D:
+    elif (not P1_V5_PREDICTION_HEAD) and (not P1_SEPARATE_HEAD_26D) and (not v18_sep_mode):
         di_head = torch.nn.Linear(len(PARAM_NAMES), 1).to(device)
     # 三分类辅助任务 head（基于 6D ODE latent）
     if LAMBDA_CLS > 0.0 and P1_USE_TRI_CLASS:
@@ -454,6 +485,16 @@ def main():
 
     if P1_V5_PREDICTION_HEAD:
         opt_params = list(model.parameters())
+    elif P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and sspg_head is not None and di_head is not None:
+        if P1_FINETUNE_HEAD_ONLY:
+            if P1_FINETUNE_16D_ONLY:
+                open_model_params = [p for p in model.parameters() if p.requires_grad]
+                opt_params = list(sspg_head.parameters()) + list(di_head.parameters()) + open_model_params
+                print(f" [V18] Phase2 优化器包含 sep_heads + 16D分支参数: n_open={len(open_model_params)}")
+            else:
+                opt_params = list(sspg_head.parameters()) + list(di_head.parameters())
+        else:
+            opt_params = list(model.parameters()) + list(sspg_head.parameters()) + list(di_head.parameters())
     elif P1_HEAD_USE_26D and e2e_head is not None:
         if P1_FINETUNE_HEAD_ONLY:
             if P1_FINETUNE_16D_ONLY:
@@ -473,7 +514,12 @@ def main():
     lr_use = 1e-3 if P1_FINETUNE_HEAD_ONLY else LR
     optimizer = torch.optim.AdamW(opt_params, lr=lr_use)
     if P1_FINETUNE_HEAD_ONLY:
-        if P1_FINETUNE_16D_ONLY:
+        if P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and sspg_head is not None and di_head is not None:
+            if P1_FINETUNE_16D_ONLY:
+                print(f" [V18] 优化 sep_heads + 16D分支, lr={lr_use}")
+            else:
+                print(f" [V18] 仅优化 sep_heads, lr={lr_use}")
+        elif P1_FINETUNE_16D_ONLY:
             print(f" [V15] 优化 e2e_head + 16D分支, lr={lr_use}")
         else:
             print(f" [V6 Route E] 仅优化 e2e_head, lr={lr_use}")
@@ -539,7 +585,16 @@ def main():
             latent_all = output.param  # (batch, 6)
             latent_26d_for_aux = None
             # V6 路线B：e2e_head 输入 26D，在 pipeline 中计算
-            if P1_HEAD_USE_26D and e2e_head is not None and hasattr(model, "get_all_latents_for_head"):
+            if P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and sspg_head is not None and di_head is not None and hasattr(model, "get_all_latents_for_head"):
+                p26, init26, z16 = model.get_all_latents_for_head(cgm, timestamps, meals, demographics)
+                head_in = torch.cat([p26, init26, z16], dim=-1)
+                head_in = _head_input_with_grad_control(head_in)
+                if head_in.shape[-1] >= 26:
+                    latent_26d_for_aux = head_in
+                sspg_pred_v18 = sspg_head(head_in).squeeze(-1)
+                di_pred_v18 = di_head(head_in).squeeze(-1)
+                e2e_pred = torch.stack([sspg_pred_v18, di_pred_v18], dim=-1)
+            elif P1_HEAD_USE_26D and e2e_head is not None and hasattr(model, "get_all_latents_for_head"):
                 p26, init26, z16 = model.get_all_latents_for_head(cgm, timestamps, meals, demographics)
                 head_in = torch.cat([p26, init26], dim=-1) if P1_V8_HEAD_10D else torch.cat([p26, init26, z16], dim=-1)
                 head_in = _head_input_with_grad_control(head_in)
@@ -573,21 +628,70 @@ def main():
                     if valid_di.any():
                         batch_di_loss = (e2e_pred[valid_di, 1] - di_b[valid_di]).pow(2).mean()
                         loss = loss + LAMBDA_DI * batch_di_loss
-            elif P1_HEAD_USE_26D and e2e_pred is not None:
+            elif P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and sspg_head is not None and di_head is not None:
                 if LAMBDA_SSPG > 0:
                     valid_sspg = torch.isfinite(sspg_b)
                     if valid_sspg.any():
                         target_sspg = (sspg_b[valid_sspg] - sspg_mean_t) / sspg_std_t if P1_ZSCORE_TARGETS else sspg_b[valid_sspg]
-                        batch_sspg_loss = (e2e_pred[valid_sspg, 0] - target_sspg).pow(2).mean()
-                        sspg_pred_batch = e2e_pred[valid_sspg, 0]
+                        pred_s = e2e_pred[valid_sspg, 0]
+                        mse_sspg = (pred_s - target_sspg).pow(2).mean()
+                        if V18_CORR_LOSS_ALPHA > 0.0 and valid_sspg.sum() > 2:
+                            vx = pred_s - pred_s.mean()
+                            vy = target_sspg - target_sspg.mean()
+                            pearson_r = (vx * vy).sum() / (vx.pow(2).sum().sqrt() * vy.pow(2).sum().sqrt() + 1e-8)
+                            batch_sspg_loss = (1.0 - V18_CORR_LOSS_ALPHA) * mse_sspg + V18_CORR_LOSS_ALPHA * (1.0 - pearson_r)
+                        else:
+                            batch_sspg_loss = mse_sspg
+                        sspg_pred_batch = pred_s
                         sspg_true_batch = target_sspg
                         loss = loss + LAMBDA_SSPG * batch_sspg_loss
                 if LAMBDA_DI > 0:
                     valid_di = torch.isfinite(di_b)
                     if valid_di.any():
                         target_di = (di_b[valid_di] - di_mean_t) / di_std_t if P1_ZSCORE_TARGETS else di_b[valid_di]
-                        batch_di_loss = (e2e_pred[valid_di, 1] - target_di).pow(2).mean()
-                        di_pred_batch = e2e_pred[valid_di, 1]
+                        pred_d = e2e_pred[valid_di, 1]
+                        mse_di = (pred_d - target_di).pow(2).mean()
+                        if V18_CORR_LOSS_ALPHA > 0.0 and valid_di.sum() > 2:
+                            vx_d = pred_d - pred_d.mean()
+                            vy_d = target_di - target_di.mean()
+                            pearson_r_d = (vx_d * vy_d).sum() / (vx_d.pow(2).sum().sqrt() * vy_d.pow(2).sum().sqrt() + 1e-8)
+                            batch_di_loss = (1.0 - V18_CORR_LOSS_ALPHA) * mse_di + V18_CORR_LOSS_ALPHA * (1.0 - pearson_r_d)
+                        else:
+                            batch_di_loss = mse_di
+                        di_pred_batch = pred_d
+                        di_true_batch = target_di
+                        loss = loss + LAMBDA_DI * batch_di_loss
+            elif P1_HEAD_USE_26D and e2e_pred is not None:
+                if LAMBDA_SSPG > 0:
+                    valid_sspg = torch.isfinite(sspg_b)
+                    if valid_sspg.any():
+                        target_sspg = (sspg_b[valid_sspg] - sspg_mean_t) / sspg_std_t if P1_ZSCORE_TARGETS else sspg_b[valid_sspg]
+                        pred_s = e2e_pred[valid_sspg, 0]
+                        mse_sspg = (pred_s - target_sspg).pow(2).mean()
+                        if V18_CORR_LOSS_ALPHA > 0.0 and valid_sspg.sum() > 2:
+                            vx = pred_s - pred_s.mean()
+                            vy = target_sspg - target_sspg.mean()
+                            pearson_r = (vx * vy).sum() / (vx.pow(2).sum().sqrt() * vy.pow(2).sum().sqrt() + 1e-8)
+                            batch_sspg_loss = (1.0 - V18_CORR_LOSS_ALPHA) * mse_sspg + V18_CORR_LOSS_ALPHA * (1.0 - pearson_r)
+                        else:
+                            batch_sspg_loss = mse_sspg
+                        sspg_pred_batch = pred_s
+                        sspg_true_batch = target_sspg
+                        loss = loss + LAMBDA_SSPG * batch_sspg_loss
+                if LAMBDA_DI > 0:
+                    valid_di = torch.isfinite(di_b)
+                    if valid_di.any():
+                        target_di = (di_b[valid_di] - di_mean_t) / di_std_t if P1_ZSCORE_TARGETS else di_b[valid_di]
+                        pred_d = e2e_pred[valid_di, 1]
+                        mse_di = (pred_d - target_di).pow(2).mean()
+                        if V18_CORR_LOSS_ALPHA > 0.0 and valid_di.sum() > 2:
+                            vx_d = pred_d - pred_d.mean()
+                            vy_d = target_di - target_di.mean()
+                            pearson_r_d = (vx_d * vy_d).sum() / (vx_d.pow(2).sum().sqrt() * vy_d.pow(2).sum().sqrt() + 1e-8)
+                            batch_di_loss = (1.0 - V18_CORR_LOSS_ALPHA) * mse_di + V18_CORR_LOSS_ALPHA * (1.0 - pearson_r_d)
+                        else:
+                            batch_di_loss = mse_di
+                        di_pred_batch = pred_d
                         di_true_batch = target_di
                         loss = loss + LAMBDA_DI * batch_di_loss
             else:
@@ -638,7 +742,7 @@ def main():
                         loss_di = (di_pred[valid_di] - target_di).pow(2).mean()
                         batch_di_loss = loss_di
                         loss = loss + LAMBDA_DI * loss_di
-            if LAMBDA_VAR_MATCH > 0.0 and e2e_head is not None:
+            if LAMBDA_VAR_MATCH > 0.0:
                 if sspg_pred_batch is not None and sspg_true_batch is not None and sspg_pred_batch.shape[0] >= 4:
                     pred_var_s = sspg_pred_batch.var()
                     true_var_s = sspg_true_batch.var().detach()
@@ -679,6 +783,15 @@ def main():
                 loss_ortho = corr.pow(2)
                 if torch.isfinite(loss_ortho):
                     loss = loss + LAMBDA_ORTHO * loss_ortho
+            # v18: Phase 1 正交约束 — 16D 与 10D 的 Frobenius 正交惩罚
+            if V18_LAMBDA_ORTHO_P1 > 0.0 and hasattr(model, 'get_all_latents_for_head'):
+                p26_orth, init26_orth, z16_orth = model.get_all_latents_for_head(cgm, timestamps, meals, demographics)
+                ode_10d = torch.cat([p26_orth, init26_orth], dim=-1)  # (B, 10)
+                # Frobenius: ||ode_10d^T @ z16_orth||_F^2 / (B^2)
+                cross = torch.mm(ode_10d.T, z16_orth)  # (10, 16)
+                ortho_loss_p1 = cross.pow(2).sum() / (ode_10d.shape[0] ** 2)
+                if torch.isfinite(ortho_loss_p1):
+                    loss = loss + V18_LAMBDA_ORTHO_P1 * ortho_loss_p1
             if LAMBDA_ORTHO_16D > 0.0 and latent_26d_for_aux is not None and latent_26d_for_aux.shape[-1] >= 26:
                 z_10d = latent_26d_for_aux[:, :10].detach()
                 z_16d = latent_26d_for_aux[:, 10:26]
@@ -693,7 +806,9 @@ def main():
                     loss = loss + LAMBDA_ORTHO_16D * loss_ortho_16d
             loss.backward()
             clip_params = list(model.parameters())
-            if P1_HEAD_USE_26D and e2e_head is not None:
+            if P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and sspg_head is not None and di_head is not None:
+                clip_params += list(sspg_head.parameters()) + list(di_head.parameters())
+            elif P1_HEAD_USE_26D and e2e_head is not None:
                 clip_params += list(e2e_head.parameters())
             elif not P1_V5_PREDICTION_HEAD:
                 clip_params += list(ir_head.parameters()) + list(sspg_head.parameters())
@@ -735,6 +850,48 @@ def main():
                 gb_mean_dbg = float(out_tr.param[:, 1].mean().item())
                 si_cv_dbg = float(si_cv)
                 print(f"  [diag] epoch={epoch+1} Gb_mean={gb_mean_dbg:.1f} si_cv={si_cv_dbg:.3f} sspg_loss={sspg_loss_epoch:.4f} di_loss={di_loss_epoch:.4f}")
+        # v18: Early Stopping
+        if V18_EARLY_STOPPING_PATIENCE > 0:
+            # 用 val_loss + sspg_loss + di_loss 作为综合指标
+            es_metric = val_loss + sspg_loss_epoch + di_loss_epoch
+            if not hasattr(main, '_es_best'):
+                main._es_best = float('inf')
+                main._es_counter = 0
+                main._es_best_state = {}
+            if es_metric < main._es_best - 1e-6:
+                main._es_best = es_metric
+                main._es_counter = 0
+                # 保存 best state
+                main._es_best_state = {
+                    'model': {k: v.clone() for k, v in model.state_dict().items()},
+                    'epoch': epoch + 1,
+                }
+                if e2e_head is not None:
+                    main._es_best_state['e2e_head'] = {k: v.clone() for k, v in e2e_head.state_dict().items()}
+                if sspg_head is not None:
+                    main._es_best_state['sspg_head'] = {k: v.clone() for k, v in sspg_head.state_dict().items()}
+                if di_head is not None:
+                    main._es_best_state['di_head'] = {k: v.clone() for k, v in di_head.state_dict().items()}
+            else:
+                main._es_counter += 1
+                if main._es_counter >= V18_EARLY_STOPPING_PATIENCE:
+                    print(f"  [V18 Early Stop] No improvement for {V18_EARLY_STOPPING_PATIENCE} epochs. "
+                          f"Best at epoch {main._es_best_state.get('epoch', '?')} (metric={main._es_best:.4f})")
+                    break
+
+    # v18: 恢复 Early Stopping 的 best model
+    if V18_EARLY_STOPPING_PATIENCE > 0 and hasattr(main, '_es_best_state') and main._es_best_state:
+        best_epoch = main._es_best_state.get('epoch', NUM_EPOCHS)
+        print(f"  [V18] Restoring best model from epoch {best_epoch}")
+        model.load_state_dict(main._es_best_state['model'])
+        if 'e2e_head' in main._es_best_state and e2e_head is not None:
+            e2e_head.load_state_dict(main._es_best_state['e2e_head'])
+        if 'sspg_head' in main._es_best_state and sspg_head is not None:
+            sspg_head.load_state_dict(main._es_best_state['sspg_head'])
+        if 'di_head' in main._es_best_state and di_head is not None:
+            di_head.load_state_dict(main._es_best_state['di_head'])
+        # 清理
+        del main._es_best_state, main._es_best, main._es_counter
 
     # ---------- 4b. 验证集重建：每样本 MSE + 若干示例曲线（供 VAE 拟合诊断） ----------
     with torch.no_grad():
@@ -847,7 +1004,14 @@ def main():
         if e2e_head is not None:
             e2e_head.eval()
         out_all, _, _, e2e_all = model(*all_tens)
-        if P1_HEAD_USE_26D and e2e_head is not None and hasattr(model, "get_all_latents"):
+        if P1_HEAD_USE_26D and V18_SEPARATE_SMALL_HEAD and sspg_head is not None and hasattr(model, "get_all_latents"):
+            p26, init26, z16 = model.get_all_latents(*all_tens)
+            head_in = torch.cat([p26, init26, z16], dim=-1)
+            sspg_all_v18 = sspg_head(head_in).squeeze(-1)
+            di_all_v18 = di_head(head_in).squeeze(-1)
+            # 构造 fake e2e_all 以兼容下游代码
+            e2e_all = torch.stack([sspg_all_v18, di_all_v18], dim=-1)
+        elif P1_HEAD_USE_26D and e2e_head is not None and hasattr(model, "get_all_latents"):
             p26, init26, z16 = model.get_all_latents(*all_tens)
             head_in = torch.cat([p26, init26], dim=-1) if P1_V8_HEAD_10D else torch.cat([p26, init26, z16], dim=-1)
             e2e_all = e2e_head(head_in)
@@ -1045,6 +1209,10 @@ def main():
         ckpt["di_head_state"] = di_head.state_dict()
     if e2e_head is not None:
         ckpt["e2e_head_state"] = e2e_head.state_dict()
+    # v18: 保存分离小头 state
+    ckpt["V18_SEPARATE_SMALL_HEAD"] = V18_SEPARATE_SMALL_HEAD
+    ckpt["V18_CORR_LOSS_ALPHA"] = V18_CORR_LOSS_ALPHA
+    ckpt["V18_EARLY_STOPPING_PATIENCE"] = V18_EARLY_STOPPING_PATIENCE
     if cls_head is not None:
         ckpt["cls_head_state"] = cls_head.state_dict()
     torch.save(ckpt, os.path.join(RESULTS_DIR, "autoencoder_p1_full.pt"))

@@ -1,0 +1,6 @@
+claim_id,claim,evidence
+C1,26D locked readout matches clinical classification (IR/Decomp) strongly on D4,v22_secondary_clinical_endpoints.csv; Ridge26D decomp_auc
+C2,Peak DI performance is higher with Exp8 neural heads than Ridge26D alone,v19_overall_metrics GV_CorrLoss(Exp8) vs v22 Ridge26D
+C3,Subject-level median 26D latents provide competitive linear readout vs adding explicit meal-aggregated context (macros/uncertainty) on D4,v28_d4_subject_context_readout.csv
+C4,"On external MSS (Phillips et al. 2023), concurrent post-prandial Actiheart summaries improve LOOCV prediction of glycemic iAUC beyond pre-meal CGM-only features",v28_d5_mss_loocv_summary_iauc.csv
+C5,D3 free-living supports cross-window probe and baseline comparisons (see scorecard),/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v21_comprehensive/v21_d3_free_living_comprehensive_scorecard.csv

@@ -1,0 +1,10 @@
+{
+  "status": "completed",
+  "best_model": "RidgeCV",
+  "metrics": {
+    "d4_sspg_pearson_r": 0.4083921500723518,
+    "d4_sspg_spearman_r": 0.5857843137254902,
+    "d4_sspg_r2": 0.1500013602522714,
+    "d4_sspg_rmse": 76.07026263408744
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "sspg": {
+    "pearson_r": -0.002,
+    "spearman_r": 0.1266,
+    "r2": -0.1097,
+    "pred_std": 24.44,
+    "true_std": 74.42,
+    "n": 63
+  },
+  "di": {
+    "pearson_r": 0.29,
+    "spearman_r": 0.3886,
+    "r2": 0.0701,
+    "pred_std": 0.46,
+    "true_std": 1.12,
+    "n": 63
+  }
+}

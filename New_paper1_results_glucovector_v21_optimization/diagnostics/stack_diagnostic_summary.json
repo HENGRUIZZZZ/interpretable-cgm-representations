@@ -1,0 +1,4 @@
+{
+  "generated_at": "2026-04-08T00:40:02.977566",
+  "note": "If stack beats train_oof but fails on test_D4 while base ridge models remain stable, this supports overfitting/meta-shift hypothesis."
+}

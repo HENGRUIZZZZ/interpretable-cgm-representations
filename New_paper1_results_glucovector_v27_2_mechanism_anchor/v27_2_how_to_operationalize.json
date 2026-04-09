@@ -1,0 +1,14 @@
+{
+  "principle": "Mechanism-anchored prediction with conditional 16D correction",
+  "equation": "y_hat = f10(z10) + alpha * gate(z16) * r16(z16)",
+  "why": [
+    "f10 keeps ODE axis as primary driver",
+    "r16 models residual only (not full replacement)",
+    "gate activates correction mainly in hard/high-uncertainty cases"
+  ],
+  "next_upgrade": [
+    "replace gate(z16) with gate(z16, circadian, activity)",
+    "add penalty forcing low correction in low-uncertainty bins",
+    "jointly optimize SSPG and DI under shared gate"
+  ]
+}

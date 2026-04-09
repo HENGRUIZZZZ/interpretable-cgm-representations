@@ -1,0 +1,15 @@
+{
+  "generated": "2026-04-08T02:04:04.328817",
+  "d5_citation": "Phillips NE, Collet TH, Naef F. Cell Reports Methods (2023). doi:10.1016/j.crmeth.2023.100545",
+  "d5_note": "External cohort; mmol/L detrended glucose in MSS; not mergeable with D1-D4 subject IDs.",
+  "outputs": [
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_d5_mss_loocv_summary.csv",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_claims_evidence_map.csv",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_report.md",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_d5_mss_meal_features_long.csv",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_d5_mss_loocv_summary_iauc.csv",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_run_meta.json",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_d4_subject_context_readout.csv",
+    "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v28_framework_value/v28_evidence_inventory.csv"
+  ]
+}

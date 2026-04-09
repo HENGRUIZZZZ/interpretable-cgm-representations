@@ -1,0 +1,67 @@
+{
+  "config": "Exp2_GV_Baseline",
+  "seed": 13,
+  "ckpt": "/Users/hertz1030/Documents/GitHub/interpretable-cgm-representations/New_paper1_results_glucovector_v17_multiseed/Exp2_GV_Baseline/seed_13/phase2_finetune_head/autoencoder_p1_full.pt",
+  "sspg": {
+    "target": "sspg",
+    "train_metric": {
+      "n": 63,
+      "pearson_r": 0.312463658828083,
+      "spearman_r": 0.3669324127862474,
+      "r2": 0.08208091529654615,
+      "rmse": 71.30004400137001,
+      "mae": 62.27925910602813
+    },
+    "d4_raw_metric": {
+      "n": 20,
+      "pearson_r": 0.5038263239413798,
+      "spearman_r": 0.6165413533834586,
+      "r2": 0.08885980735662857,
+      "rmse": 76.19151861847034,
+      "mae": 59.573408905465875
+    },
+    "d4_cal_metric": {
+      "n": 20,
+      "pearson_r": 0.5038263239413796,
+      "spearman_r": 0.6165413533834586,
+      "r2": 0.14694784383560622,
+      "rmse": 73.72279974723018,
+      "mae": 55.28734969301523
+    },
+    "calibration": {
+      "a": 1.3754623511919732,
+      "b": -57.18144634486923
+    }
+  },
+  "di": {
+    "target": "di",
+    "train_metric": {
+      "n": 63,
+      "pearson_r": 0.3602308907199409,
+      "spearman_r": 0.3579872070535131,
+      "r2": 0.11624290501086276,
+      "rmse": 1.056459340066117,
+      "mae": 0.8198113772369866
+    },
+    "d4_raw_metric": {
+      "n": 16,
+      "pearson_r": 0.6693411039277253,
+      "spearman_r": 0.6029411764705882,
+      "r2": 0.033144794110660514,
+      "rmse": 0.7128835353499308,
+      "mae": 0.627633946956025
+    },
+    "d4_cal_metric": {
+      "n": 16,
+      "pearson_r": 0.6693411039277253,
+      "spearman_r": 0.6029411764705882,
+      "r2": 0.20912137588270963,
+      "rmse": 0.6447521265722693,
+      "mae": 0.5637424163766458
+    },
+    "calibration": {
+      "a": 1.1890228324192458,
+      "b": -0.4690370333233699
+    }
+  }
+}

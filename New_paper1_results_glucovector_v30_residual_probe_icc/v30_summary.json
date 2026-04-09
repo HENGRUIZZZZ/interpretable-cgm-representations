@@ -1,0 +1,15 @@
+{
+  "ablation_sspg_spearman": {
+    "full_26d": 0.7789473684210525,
+    "zero_residual_16d": 0.6105263157894737,
+    "shuffle_residual_16d": 0.675187969924812
+  },
+  "ablation_di_spearman": {
+    "full_26d": 0.6088235294117647,
+    "zero_residual_16d": 0.6058823529411764,
+    "shuffle_residual_16d": 0.5558823529411765
+  },
+  "probe_file": "v30_context_probes_z10_vs_z16.csv",
+  "icc_file": "v30_d4_stratified_icc.csv",
+  "n_splits_d4": 5
+}

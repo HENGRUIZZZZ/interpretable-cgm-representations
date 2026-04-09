@@ -1,0 +1,14 @@
+version,experiment,data_scope,type,status
+v18,Exp1_Wang_Baseline,D1+D2->D4,regression,completed
+v18,Exp2_Metwally14,D1+D2->D4,regression,completed
+v18,Exp3_Healey,D1+D2->D4,regression,completed
+v18,Exp4_SimpleStats,D1+D2->D4,regression,completed
+v18,Exp8_GV_CorrLoss,D1+D2->D4,regression,completed
+v19,Joint_Classification,D1+D2->D4,classification,completed
+v20,Fairness_Healey_CGMOnly,D1+D2->D4,fairness,completed
+v20,D3_FreeLiving_Benchmark,D3,free-living,completed
+v21,Ridge10D_26D_Optimization,D1+D2->D4,retrain_head,completed
+v21,Stack_Diagnostics,D1+D2->D4,failure_analysis,completed
+v22,Locked_Protocol_Primary_Secondary,D1+D2->D4,locked_protocol,completed
+v22,16D_Conditional_Utility,D4_meal_level,conditional_utility,completed
+v22,Beyond_Metwally_Residual,D4_subject_level,residual_explainability,completed

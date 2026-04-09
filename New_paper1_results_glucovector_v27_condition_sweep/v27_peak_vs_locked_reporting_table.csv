@@ -1,0 +1,17 @@
+track,metric,value,model,source
+PEAK,DI_R2,0.4139217206450144,GV_CorrLoss(Exp8),v19_overall_metrics.csv
+PEAK_ALL_GV_FAMILY,DI_R2,0.4139217206450144,GV_CorrLoss(Exp8) (v19),v19/v21
+V27_BEST_26D,DI_R2,0.2073516310995026,RidgeCV,v27_best_by_test_r2.csv
+LOCKED_PLUS,DI_R2,0.2073516310995005,Base26D,v26_metrics_summary.csv
+LOCKED,DI_R2,0.2073516310994975,Ridge26D,v22_primary_endpoints_locked.csv
+LOCKED,DI_Spearman,0.6088235294117647,Ridge26D,v22_primary_endpoints_locked.csv
+V27_BEST_26D,DI_Spearman,0.6088235294117647,RidgeCV,v27_best_by_test_r2.csv
+PEAK,DI_Spearman,0.538235294117647,GV_CorrLoss(Exp8),v19_overall_metrics.csv
+PEAK_ALL_GV_FAMILY,SSPG_R2,0.2667124872230608,GV_CorrLoss+VarMatch(v19) (v19),v19/v21
+PEAK,SSPG_R2,0.2253000725642483,GV_CorrLoss(Exp8),v19_overall_metrics.csv
+V27_BEST_26D,SSPG_R2,0.225208843157781,RidgeCV_YJTarget,v27_best_by_test_r2.csv
+LOCKED_PLUS,SSPG_R2,0.1603510360540705,Base26D,v26_metrics_summary.csv
+LOCKED,SSPG_R2,0.1603510360540685,Ridge26D,v22_primary_endpoints_locked.csv
+V27_BEST_26D,SSPG_Spearman,0.7909774436090224,RidgeCV_YJTarget,v27_best_by_test_r2.csv
+LOCKED,SSPG_Spearman,0.7789473684210525,Ridge26D,v22_primary_endpoints_locked.csv
+PEAK,SSPG_Spearman,0.7172932330827068,GV_CorrLoss(Exp8),v19_overall_metrics.csv

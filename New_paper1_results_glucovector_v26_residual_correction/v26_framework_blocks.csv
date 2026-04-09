@@ -1,0 +1,5 @@
+block,purpose
+10D_mechanism_axis,stable metabolic baseline
+16D_context_axis,meal/context-driven correction
+calibration,decompress prediction range
+residual_correction,fix systematic tail/context errors
